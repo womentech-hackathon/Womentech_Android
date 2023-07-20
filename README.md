@@ -16,6 +16,8 @@
 | **AOS** | 조정미 | Kotlin | [@jung0115](https://github.com/jung0115) |
 | **Server** | 이소연 | SpringBoot | [@soyeonii](https://github.com/soyeonii) |
 
+<br/>
+
 ### 🛠️ Tech Stack
 - **iOS** : `Flutter`, `Dart`  
 - **AOS** : `Android Studio`, `Kotlin`  
