@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+            android:id="@+id/menu_home"
+            android:title="@string/home_title"
+            />
+            <!--android:icon="@drawable/selector_menu_home"-->
+        <item
+            android:id="@+id/menu_goal"
+            android:title="@string/goal_title"
+            />
+        <item
+            android:id="@+id/menu_welfare"
+            android:title="@string/welfare_title" />
+    </group>
+
+</menu>
