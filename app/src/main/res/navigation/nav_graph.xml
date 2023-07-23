@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menu_home">
+
+    <!-- 메인 탭 -->
+    <fragment
+        android:id="@+id/menu_home"
+        android:name="com.clone.sw_hackathon.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <!-- 목표 탭 -->
+    <fragment
+        android:id="@+id/menu_goal"
+        android:name="com.clone.sw_hackathon.goal.GoalFragment"
+        android:label="fragment_goal"
+        tools:layout="@layout/fragment_goal" />
+
+    <!-- 복지 탭 -->
+    <fragment
+        android:id="@+id/menu_welfare"
+        android:name="com.clone.sw_hackathon.welfare.WelfareFragment"
+        android:label="fragment_welfare"
+        tools:layout="@layout/fragment_welfare" />
+
+</navigation>
