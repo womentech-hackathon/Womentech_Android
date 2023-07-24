@@ -38,7 +38,8 @@ android {
                     'src/main/res/layouts/bottom-navi',
                     'src/main/res/layouts/home',
                     'src/main/res/layouts/goal',
-                    'src/main/res/layouts/welfare',
+                    'src/main/res/layouts/education',
+                    'src/main/res/layouts/my-page',
                     'src/main/res/layouts',
                     'src/main/res'
             ]

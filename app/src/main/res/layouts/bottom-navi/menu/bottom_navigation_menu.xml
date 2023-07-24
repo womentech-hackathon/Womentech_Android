@@ -5,15 +5,22 @@
         <item
             android:id="@+id/menu_home"
             android:title="@string/home_title"
-            />
-            <!--android:icon="@drawable/selector_menu_home"-->
+            android:icon="@drawable/ic_menu_home" />
+
         <item
             android:id="@+id/menu_goal"
             android:title="@string/goal_title"
-            />
+            android:icon="@drawable/ic_menu_goal" />
+
         <item
-            android:id="@+id/menu_welfare"
-            android:title="@string/welfare_title" />
+            android:id="@+id/menu_education"
+            android:title="@string/education_title"
+            android:icon="@drawable/ic_menu_education" />
+
+        <item
+            android:id="@+id/menu_my_page"
+            android:title="@string/my_page_title"
+            android:icon="@drawable/ic_menu_my_page" />
     </group>
 
 </menu>
