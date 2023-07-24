@@ -1,4 +1,4 @@
-package com.clone.sw_hackathon
+package com.ssjm.sw_hackathon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.clone.sw_hackathon.databinding.ActivityMainBinding
+import com.ssjm.sw_hackathon.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     // ViewBinding Setting
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding.navBottom.setupWithNavController(navController)
 
         // 아이콘에 색상 입히지 않고 아이콘 이미지 그대로 보여주기
-        binding.navBottom.itemIconTintList = null
+        //binding.navBottom.itemIconTintList = null
 
         // 최상위 화면을 제외하고는 BottomNavigation Bar 없애기
         setBottomNavigation()
@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener{_, destination, _ ->
             if(destination.id == R.id.menu_home ||
                 destination.id == R.id.menu_goal ||
-                destination.id == R.id.menu_welfare) {
+                destination.id == R.id.menu_education ||
+                destination.id == R.id.menu_my_page) {
                 binding.navBottom.visibility = View.VISIBLE
             } else {
                 binding.navBottom.visibility = View.GONE
@@ -54,7 +55,8 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if(navController.currentDestination?.id == R.id.menu_home ||
             navController.currentDestination?.id == R.id.menu_goal ||
-            navController.currentDestination?.id == R.id.menu_welfare) {
+            navController.currentDestination?.id == R.id.menu_education ||
+            navController.currentDestination?.id == R.id.menu_my_page) {
             if (System.currentTimeMillis() - waitTime >= 1500) {
                 waitTime = System.currentTimeMillis()
                 Toast.makeText(this, getString(R.string.toast_back_main_page), Toast.LENGTH_SHORT).show()

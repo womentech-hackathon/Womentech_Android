@@ -5,25 +5,32 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/menu_home">
 
-    <!-- 메인 탭 -->
+    <!-- 홈 탭 -->
     <fragment
         android:id="@+id/menu_home"
-        android:name="com.clone.sw_hackathon.home.HomeFragment"
+        android:name="com.ssjm.sw_hackathon.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 
-    <!-- 목표 탭 -->
+    <!-- 실천 탭 -->
     <fragment
         android:id="@+id/menu_goal"
-        android:name="com.clone.sw_hackathon.goal.GoalFragment"
+        android:name="com.ssjm.sw_hackathon.goal.GoalFragment"
         android:label="fragment_goal"
         tools:layout="@layout/fragment_goal" />
 
-    <!-- 복지 탭 -->
+    <!-- 교육 탭 -->
     <fragment
-        android:id="@+id/menu_welfare"
-        android:name="com.clone.sw_hackathon.welfare.WelfareFragment"
-        android:label="fragment_welfare"
-        tools:layout="@layout/fragment_welfare" />
+        android:id="@+id/menu_education"
+        android:name="com.ssjm.sw_hackathon.education.EducationFragment"
+        android:label="fragment_education"
+        tools:layout="@layout/fragment_education" />
+
+    <!-- 마이페이지 탭 -->
+    <fragment
+        android:id="@+id/menu_my_page"
+        android:name="com.ssjm.sw_hackathon.myPage.MyPageFragment"
+        android:label="fragment_my_page"
+        tools:layout="@layout/fragment_my_page" />
 
 </navigation>
