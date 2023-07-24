@@ -43,12 +43,20 @@
         app:tabTextColor="@color/gray_C3"
         app:tabSelectedTextColor="@color/black"
         app:tabIndicatorColor="@color/gray_60"
+        app:tabIndicatorHeight="3dp"
         android:layout_below="@+id/text_info_education" />
+    
+    <View
+        android:id="@+id/line_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_D9"
+        android:layout_below="@id/tablayout_education"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_education"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tablayout_education" />
+        android:layout_below="@id/line_viewpager" />
 
 </RelativeLayout>
