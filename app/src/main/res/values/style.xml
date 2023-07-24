@@ -20,4 +20,10 @@
         <item name="android:textSize">13sp</item>
     </style>
 
+    <!-- 교육 정보 탭 글자 크기 & 스타일 -->
+    <style name="education_tab_text" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

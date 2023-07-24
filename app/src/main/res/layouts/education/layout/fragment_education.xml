@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".education.EducationFragment"
     android:background="@color/white">
 
+    <!-- 검색 버튼 -->
+    <ImageButton
+        android:id="@+id/btn_search"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="14dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_search"
+        app:tint="@color/search_icon"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
 
+    <!-- 페이지 설명 -->
+    <TextView
+        android:id="@+id/text_info_education"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/info_education"
+        android:textColor="@color/black"
+        android:textSize="26dp"
+        android:textStyle="bold"/>
 
-</FrameLayout>
+    <!-- 전체/찜 Tab-->
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout_education"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:tabTextAppearance="@style/education_tab_text"
+        app:tabTextColor="@color/gray_C3"
+        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="@color/gray_60"
+        android:layout_below="@+id/text_info_education" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_education"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tablayout_education" />
+
+</RelativeLayout>

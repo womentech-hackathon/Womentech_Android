@@ -3,5 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- gray -->
     <color name="gray_AB">#ABABAB</color>
+    <color name="gray_60">#606060</color>
+    <color name="gray_C3">#C3C3C3</color>
+    <color name="gray_EB">#EBEBEB</color>
+
+    <!-- app color -->
+    <color name="search_icon">#191F28</color>
 </resources>
