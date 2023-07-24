@@ -8,28 +8,28 @@
     <!-- 홈 탭 -->
     <fragment
         android:id="@+id/menu_home"
-        android:name="com.clone.sw_hackathon.home.HomeFragment"
+        android:name="com.ssjm.sw_hackathon.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 
     <!-- 실천 탭 -->
     <fragment
         android:id="@+id/menu_goal"
-        android:name="com.clone.sw_hackathon.goal.GoalFragment"
+        android:name="com.ssjm.sw_hackathon.goal.GoalFragment"
         android:label="fragment_goal"
         tools:layout="@layout/fragment_goal" />
 
     <!-- 교육 탭 -->
     <fragment
         android:id="@+id/menu_education"
-        android:name="com.clone.sw_hackathon.education.EducationFragment"
+        android:name="com.ssjm.sw_hackathon.education.EducationFragment"
         android:label="fragment_education"
         tools:layout="@layout/fragment_education" />
 
     <!-- 마이페이지 탭 -->
     <fragment
         android:id="@+id/menu_my_page"
-        android:name="com.clone.sw_hackathon.myPage.MyPageFragment"
+        android:name="com.ssjm.sw_hackathon.myPage.MyPageFragment"
         android:label="fragment_my_page"
         tools:layout="@layout/fragment_my_page" />
 

@@ -1,24 +1,23 @@
-package com.clone.sw_hackathon.education
+package com.ssjm.sw_hackathon.goal
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.clone.sw_hackathon.databinding.FragmentEducationBinding
+import com.ssjm.sw_hackathon.databinding.FragmentGoalBinding
 
-
-// 교육 탭
-class EducationFragment : Fragment() {
+// 목표 탭
+class GoalFragment : Fragment() {
     // ViewBinding Setting
-    private var _binding: FragmentEducationBinding? = null
+    private var _binding: FragmentGoalBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentEducationBinding.inflate(layoutInflater)
+        _binding = FragmentGoalBinding.inflate(layoutInflater)
 
         return binding.root
     }

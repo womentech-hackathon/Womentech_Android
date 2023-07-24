@@ -1,11 +1,11 @@
-package com.clone.sw_hackathon.myPage
+package com.ssjm.sw_hackathon.myPage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.clone.sw_hackathon.databinding.FragmentMyPageBinding
+import com.ssjm.sw_hackathon.databinding.FragmentMyPageBinding
 
 
 // 마이페이지

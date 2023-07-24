@@ -1,23 +1,23 @@
-package com.clone.sw_hackathon.goal
+package com.ssjm.sw_hackathon.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.clone.sw_hackathon.databinding.FragmentGoalBinding
+import com.ssjm.sw_hackathon.databinding.FragmentHomeBinding
 
-// 목표 탭
-class GoalFragment : Fragment() {
+// 메인 탭
+class HomeFragment : Fragment() {
     // ViewBinding Setting
-    private var _binding: FragmentGoalBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentGoalBinding.inflate(layoutInflater)
+        _binding = FragmentHomeBinding.inflate(layoutInflater)
 
         return binding.root
     }

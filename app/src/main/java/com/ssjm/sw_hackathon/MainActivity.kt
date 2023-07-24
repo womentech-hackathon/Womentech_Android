@@ -1,4 +1,4 @@
-package com.clone.sw_hackathon
+package com.ssjm.sw_hackathon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.clone.sw_hackathon.databinding.ActivityMainBinding
+import com.ssjm.sw_hackathon.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     // ViewBinding Setting

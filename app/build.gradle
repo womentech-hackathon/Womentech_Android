@@ -8,11 +8,11 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
-    namespace 'com.clone.sw_hackathon'
+    namespace 'com.ssjm.sw_hackathon'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.clone.sw_hackathon"
+        applicationId "com.ssjm.sw_hackathon"
         minSdk 24
         targetSdk 33
         versionCode 1

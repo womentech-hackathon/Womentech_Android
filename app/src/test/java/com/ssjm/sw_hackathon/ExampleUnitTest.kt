@@ -1,4 +1,4 @@
-package com.clone.sw_hackathon
+package com.ssjm.sw_hackathon
 
 import org.junit.Test
 
