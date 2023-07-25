@@ -12,4 +12,7 @@
 
     <!-- 교육 -->
     <string name="info_education">중장년을 위한\n교육 정보입니다.</string>
+    <string name="edu_filter_all">모두보기</string>
+    <string name="edu_filter_ing">접수중</string>
+    <string name="edu_filter_end">마감</string>
 </resources>
