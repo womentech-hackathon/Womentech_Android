@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentEducationBinding
 import com.ssjm.sw_hackathon.education.tab.EduAllFragment
 import com.ssjm.sw_hackathon.education.tab.EduBookmarkFragment
@@ -37,6 +39,8 @@ class EducationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.gradient_blue)
 
         // 서울시 어르신 취업지원센터 교육정보 개수 조회
         apiGetEducationCount(
