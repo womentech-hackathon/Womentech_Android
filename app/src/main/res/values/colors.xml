@@ -18,7 +18,10 @@
 
     <!-- app color -->
     <color name="main_color_1">#5C82FC</color>
-    <color name="main_color_1_5">#0D5C82FC</color>
     <color name="gradient_blue">#803F75FF</color>
     <color name="search_icon">#191F28</color>
+    <color name="blue">#2764FF</color>
+    <color name="red">#FF2640</color>
+    <color name="blue_transparent">#0D2764FF</color>
+    <color name="red_transparent">#0DFF2640</color>
 </resources>

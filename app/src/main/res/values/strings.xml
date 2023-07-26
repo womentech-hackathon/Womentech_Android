@@ -15,4 +15,5 @@
     <string name="edu_filter_all">모두보기</string>
     <string name="edu_filter_ing">접수중</string>
     <string name="edu_filter_end">마감</string>
+    <string name="edu_bookmark">찜</string>
 </resources>
