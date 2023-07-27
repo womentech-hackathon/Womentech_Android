@@ -15,6 +15,9 @@
     <color name="gray04">#A8B0B9</color>
     <color name="gray05">#D4D6DC</color>
     <color name="gray06">#E9EBEE</color>
+    <color name="gray07">#F7F8F9</color>
+    
+    <color name="black01">#111111</color>
 
     <!-- app color -->
     <color name="main_color_1">#5C82FC</color>
