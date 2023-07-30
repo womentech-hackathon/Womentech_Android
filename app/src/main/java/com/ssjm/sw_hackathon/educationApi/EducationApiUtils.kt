@@ -18,7 +18,7 @@ private const val API_KEY = BuildConfig.SEOUL_OPEN_API_KEY
 fun apiGetEducationInfo(
     startIndex: Int,
     endIndex: Int,
-    addEducationList: (item: MutableList<EducationRow>) -> Unit
+    addEducationList: (item: MutableList<EducationRow>?) -> Unit
 ) {
     retrofit.create(EducationService::class.java)
         .getEducation(API_KEY, startIndex, endIndex)

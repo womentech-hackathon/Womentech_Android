@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SW-Hackathon</string>
+    <string name="app_name">이루다</string>
 
     <!-- bottom navigation -->
     <string name="home_title">홈</string>
