@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentEduAllBinding
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
+import com.ssjm.sw_hackathon.education.recycler.EducationItemInterface
+import com.ssjm.sw_hackathon.education.recycler.LoadingItem
 import com.ssjm.sw_hackathon.educationApi.EducationRow
 import com.ssjm.sw_hackathon.educationApi.apiGetEducationCount
 import com.ssjm.sw_hackathon.educationApi.apiGetEducationInfo
@@ -23,11 +26,11 @@ class EduAllFragment : Fragment() {
     private val binding get() = _binding!!
 
     // 전체
-    private var allEducationItems: MutableList<EducationItem>? = null
+    private var allEducationItems: MutableList<EducationItemInterface>? = null
     // 접수중
-    private var ingEducationItems: MutableList<EducationItem>? = null
+    private var ingEducationItems: MutableList<EducationItemInterface>? = null
     // 마감
-    private var endEducationItems: MutableList<EducationItem>? = null
+    private var endEducationItems: MutableList<EducationItemInterface>? = null
 
     // RecyclerView Adapter
     private lateinit var educationAdapter: EducationAdapter
@@ -79,13 +82,61 @@ class EduAllFragment : Fragment() {
         })
 
         // recyclerview 스크롤 감지 => 무한 스크롤
+        binding.recyclerviewEduAll.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                // 스크롤이 끝에 도달했는지 확인
+                if (!binding.recyclerviewEduAll.canScrollVertically(1)) {
+                    // 모두 보기 filter 중이라면 모두보기 list의 데이터를 추가
+                    if(filter == "all" && allEducationItems!!.size >= 10) {
+                        educationAdapter.items.removeAt(10 * page)
+                        page++
+                        educationAdapter.items = allEducationItems!!.subList(0, 10 * page)
+                        if(allEducationItems!!.size > 10 * page) {
+                            educationAdapter.items.add(LoadingItem(
+                                "하하",
+                                "하하"
+                            ))
+                        }
+                        educationAdapter.notifyDataSetChanged()
+                    }
+                    // 접수중 filter 중이라면 접수중 list의 데이터를 추가
+                    else if(filter == "ing" && ingEducationItems!!.size >= 10) {
+                        educationAdapter.items.removeAt(10 * page)
+                        page++
+                        educationAdapter.items = ingEducationItems!!.subList(0, 10 * page)
+                        if(ingEducationItems!!.size > 10 * page) {
+                            educationAdapter.items.add(LoadingItem(
+                                "하하",
+                                "하하"
+                            ))
+                        }
+                        educationAdapter.notifyDataSetChanged()
+                    }
+                    // 마감 filter 중이라면 마감 list의 데이터를 추가
+                    else if(filter == "end" && endEducationItems!!.size >= 10) {
+                        educationAdapter.items.removeAt(10 * page)
+                        page++
+                        educationAdapter.items = endEducationItems!!.subList(0, 10 * page)
+                        if(endEducationItems!!.size > 10 * page) {
+                            educationAdapter.items.add(LoadingItem(
+                                "하하",
+                                "하하"
+                            ))
+                        }
+                        educationAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+        })
     }
 
     // 교육 아이템 recyclerview 세팅
     private fun initRecycler() {
-        allEducationItems = mutableListOf<EducationItem>()
-        ingEducationItems = mutableListOf<EducationItem>()
-        endEducationItems = mutableListOf<EducationItem>()
+        allEducationItems = mutableListOf<EducationItemInterface>()
+        ingEducationItems = mutableListOf<EducationItemInterface>()
+        endEducationItems = mutableListOf<EducationItemInterface>()
 
         educationAdapter = EducationAdapter(requireContext())
         binding.recyclerviewEduAll.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -160,8 +211,15 @@ class EduAllFragment : Fragment() {
         binding.recyclerviewEduAll.smoothScrollToPosition(0)
 
         filter = "all"
-        if(allEducationItems!!.size >= 10)
+        if(allEducationItems!!.size >= 10 * page) {
             educationAdapter.items = allEducationItems!!.subList(0, 10 * page)
+            if(allEducationItems!!.size > 10 * page) {
+                educationAdapter.items.add(LoadingItem(
+                    "하하",
+                    "하하"
+                ))
+            }
+        }
         else
             educationAdapter.items = allEducationItems!!
         educationAdapter.notifyDataSetChanged()
@@ -185,8 +243,15 @@ class EduAllFragment : Fragment() {
         binding.recyclerviewEduAll.smoothScrollToPosition(0)
 
         filter = "ing"
-        if(ingEducationItems!!.size >= 10)
+        if(ingEducationItems!!.size >= 10 * page) {
             educationAdapter.items = ingEducationItems!!.subList(0, 10 * page)
+            if(ingEducationItems!!.size > 10 * page) {
+                educationAdapter.items.add(LoadingItem(
+                    "하하",
+                    "하하"
+                ))
+            }
+        }
         else
             educationAdapter.items = ingEducationItems!!
         educationAdapter.notifyDataSetChanged()
@@ -210,8 +275,15 @@ class EduAllFragment : Fragment() {
         binding.recyclerviewEduAll.smoothScrollToPosition(0)
 
         filter = "end"
-        if(endEducationItems!!.size >= 10)
+        if(endEducationItems!!.size >= 10 * page) {
             educationAdapter.items = endEducationItems!!.subList(0, 10 * page)
+            if(endEducationItems!!.size > 10 * page) {
+                educationAdapter.items.add(LoadingItem(
+                    "하하",
+                    "하하"
+                ))
+            }
+        }
         else
             educationAdapter.items = endEducationItems!!
         educationAdapter.notifyDataSetChanged()
@@ -231,6 +303,9 @@ class EduAllFragment : Fragment() {
 
     // 최신순 정렬
     fun orderNew() {
+        page = 1
+        binding.recyclerviewEduAll.smoothScrollToPosition(0)
+
         orderType = "new"
         allEducationItems!!.sortByDescending { it.applicationPeriod }
         ingEducationItems!!.sortByDescending { it.applicationPeriod }
@@ -239,11 +314,17 @@ class EduAllFragment : Fragment() {
 
     // 오래된순 정렬
     fun orderOld() {
+        page = 1
+        binding.recyclerviewEduAll.smoothScrollToPosition(0)
+
         orderType = "old"
     }
 
     // 마감순 정렬
     fun orderEnd() {
+        page = 1
+        binding.recyclerviewEduAll.smoothScrollToPosition(0)
+
         orderType = "end"
     }
 
