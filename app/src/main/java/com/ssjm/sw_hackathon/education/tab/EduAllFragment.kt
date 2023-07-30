@@ -94,10 +94,7 @@ class EduAllFragment : Fragment() {
                         page++
                         educationAdapter.items = allEducationItems!!.subList(0, 10 * page)
                         if(allEducationItems!!.size > 10 * page) {
-                            educationAdapter.items.add(LoadingItem(
-                                "하하",
-                                "하하"
-                            ))
+                            educationAdapter.items.add(LoadingItem())
                         }
                         educationAdapter.notifyDataSetChanged()
                     }
@@ -107,10 +104,7 @@ class EduAllFragment : Fragment() {
                         page++
                         educationAdapter.items = ingEducationItems!!.subList(0, 10 * page)
                         if(ingEducationItems!!.size > 10 * page) {
-                            educationAdapter.items.add(LoadingItem(
-                                "하하",
-                                "하하"
-                            ))
+                            educationAdapter.items.add(LoadingItem())
                         }
                         educationAdapter.notifyDataSetChanged()
                     }
@@ -120,10 +114,7 @@ class EduAllFragment : Fragment() {
                         page++
                         educationAdapter.items = endEducationItems!!.subList(0, 10 * page)
                         if(endEducationItems!!.size > 10 * page) {
-                            educationAdapter.items.add(LoadingItem(
-                                "하하",
-                                "하하"
-                            ))
+                            educationAdapter.items.add(LoadingItem())
                         }
                         educationAdapter.notifyDataSetChanged()
                     }
@@ -176,6 +167,8 @@ class EduAllFragment : Fragment() {
                                 + education.STARTDATE.replace("-", "/")
                                 + " ~ "
                                 + education.ENDDATE.replace("-", "/"),   // 교육 기간
+                        applicationStart = education.APPLICATIONSTARTDATE,
+                        applicationEnd = education.APPLICATIONSTARTDATE,
                         isBookmark = false  // 찜 유무
                     )
                 )
@@ -197,9 +190,6 @@ class EduAllFragment : Fragment() {
             // 최신순
             orderNew()
 
-            // 최초 접속 시 모두 보기
-            filterAll()
-
             // adapter 새로고침
             educationAdapter.notifyDataSetChanged()
         }
@@ -214,10 +204,7 @@ class EduAllFragment : Fragment() {
         if(allEducationItems!!.size >= 10 * page) {
             educationAdapter.items = allEducationItems!!.subList(0, 10 * page)
             if(allEducationItems!!.size > 10 * page) {
-                educationAdapter.items.add(LoadingItem(
-                    "하하",
-                    "하하"
-                ))
+                educationAdapter.items.add(LoadingItem())
             }
         }
         else
@@ -246,10 +233,7 @@ class EduAllFragment : Fragment() {
         if(ingEducationItems!!.size >= 10 * page) {
             educationAdapter.items = ingEducationItems!!.subList(0, 10 * page)
             if(ingEducationItems!!.size > 10 * page) {
-                educationAdapter.items.add(LoadingItem(
-                    "하하",
-                    "하하"
-                ))
+                educationAdapter.items.add(LoadingItem())
             }
         }
         else
@@ -278,10 +262,7 @@ class EduAllFragment : Fragment() {
         if(endEducationItems!!.size >= 10 * page) {
             educationAdapter.items = endEducationItems!!.subList(0, 10 * page)
             if(endEducationItems!!.size > 10 * page) {
-                educationAdapter.items.add(LoadingItem(
-                    "하하",
-                    "하하"
-                ))
+                educationAdapter.items.add(LoadingItem())
             }
         }
         else
@@ -303,29 +284,42 @@ class EduAllFragment : Fragment() {
 
     // 최신순 정렬
     fun orderNew() {
-        page = 1
-        binding.recyclerviewEduAll.smoothScrollToPosition(0)
-
         orderType = "new"
-        allEducationItems!!.sortByDescending { it.applicationPeriod }
-        ingEducationItems!!.sortByDescending { it.applicationPeriod }
-        endEducationItems!!.sortByDescending { it.applicationPeriod }
+        allEducationItems!!.sortByDescending { it.applicationStart }
+        ingEducationItems!!.sortByDescending { it.applicationStart }
+        endEducationItems!!.sortByDescending { it.applicationStart }
+
+        if(filter == "all") filterAll()
+        else if(filter == "ing") filterIng()
+        else if(filter == "end") filterEnd()
     }
 
     // 오래된순 정렬
     fun orderOld() {
-        page = 1
-        binding.recyclerviewEduAll.smoothScrollToPosition(0)
-
         orderType = "old"
+        allEducationItems!!.sortBy { it.applicationStart }
+        ingEducationItems!!.sortBy { it.applicationStart }
+        endEducationItems!!.sortBy { it.applicationStart }
+
+        if(filter == "all") filterAll()
+        else if(filter == "ing") filterIng()
+        else if(filter == "end") filterEnd()
     }
 
     // 마감순 정렬
     fun orderEnd() {
-        page = 1
-        binding.recyclerviewEduAll.smoothScrollToPosition(0)
-
         orderType = "end"
+        allEducationItems!!.sortByDescending { it.applicationEnd }
+        ingEducationItems!!.sortByDescending { it.applicationEnd }
+        endEducationItems!!.sortByDescending { it.applicationEnd }
+
+        allEducationItems!!.sortByDescending { it.status }
+        ingEducationItems!!.sortByDescending { it.status }
+        endEducationItems!!.sortByDescending { it.status }
+
+        if(filter == "all") filterAll()
+        else if(filter == "ing") filterIng()
+        else if(filter == "end") filterEnd()
     }
 
     override fun onDestroy() {
