@@ -8,6 +8,9 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <!-- bottom sheet rounding을 위한-->
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
     </style>
 
 </resources>

@@ -18,5 +18,7 @@
     <string name="edu_bookmark">찜</string>
     <string name="edu_sort_new">최신순</string>
     <string name="edu_sort_old">오래된순</string>
-    <string name="edu_sort_finish">마감순</string>
+    <string name="edu_sort_end">마감순</string>
+    <string name="order_title">정렬 설정</string>
+    <string name="order_complete">적용</string>
 </resources>

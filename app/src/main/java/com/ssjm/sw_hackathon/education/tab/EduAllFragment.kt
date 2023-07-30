@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentEduAllBinding
+import com.ssjm.sw_hackathon.education.bottomsheet.EduOrderBottomFragment
+import com.ssjm.sw_hackathon.education.bottomsheet.EduOrderListener
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
 import com.ssjm.sw_hackathon.education.recycler.EducationItemInterface
@@ -16,11 +18,9 @@ import com.ssjm.sw_hackathon.education.recycler.LoadingItem
 import com.ssjm.sw_hackathon.educationApi.EducationRow
 import com.ssjm.sw_hackathon.educationApi.apiGetEducationCount
 import com.ssjm.sw_hackathon.educationApi.apiGetEducationInfo
-import okhttp3.internal.notify
-import okhttp3.internal.notifyAll
 
 // 교육 > 전체
-class EduAllFragment : Fragment() {
+class EduAllFragment : Fragment(), EduOrderListener {
     // ViewBinding Setting
     private var _binding: FragmentEduAllBinding? = null
     private val binding get() = _binding!!
@@ -79,6 +79,12 @@ class EduAllFragment : Fragment() {
         // 마감 필터 선택
         binding.linearEduFilterEnd.setOnClickListener(View.OnClickListener {
             filterEnd()
+        })
+
+        // 정렬 버튼
+        binding.linearSortingBtn.setOnClickListener(View.OnClickListener {
+            val bottomSheet = EduOrderBottomFragment()
+            bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
         })
 
         // recyclerview 스크롤 감지 => 무한 스크롤
@@ -283,7 +289,7 @@ class EduAllFragment : Fragment() {
     }
 
     // 최신순 정렬
-    fun orderNew() {
+    override fun orderNew() {
         orderType = "new"
         allEducationItems!!.sortByDescending { it.applicationStart }
         ingEducationItems!!.sortByDescending { it.applicationStart }
@@ -295,7 +301,7 @@ class EduAllFragment : Fragment() {
     }
 
     // 오래된순 정렬
-    fun orderOld() {
+    override fun orderOld() {
         orderType = "old"
         allEducationItems!!.sortBy { it.applicationStart }
         ingEducationItems!!.sortBy { it.applicationStart }
@@ -307,7 +313,7 @@ class EduAllFragment : Fragment() {
     }
 
     // 마감순 정렬
-    fun orderEnd() {
+    override fun orderEnd() {
         orderType = "end"
         allEducationItems!!.sortByDescending { it.applicationEnd }
         ingEducationItems!!.sortByDescending { it.applicationEnd }
