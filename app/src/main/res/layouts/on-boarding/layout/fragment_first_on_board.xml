@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".onBoarding.FirstOnBoardFragment"
+    android:background="@color/white">
+
+    <!-- 단계 표시 -->
+    <TextView
+        android:id="@+id/text_first_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/on_board_first_step"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/main_color_1"/>
+
+    <TextView
+        android:id="@+id/text_first_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/on_board_first_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black01"
+        android:layout_below="@id/text_first_step"/>
+
+    <!-- 목표 리스트 -->
+    <LinearLayout
+        android:id="@+id/linear_first_goal_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    </LinearLayout>
+
+    <!-- 다음 단계로 -->
+    <LinearLayout
+        android:id="@+id/linear_next_onboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="26dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/main_color_1"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/text_next_onboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_on_board"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
