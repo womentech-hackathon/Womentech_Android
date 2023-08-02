@@ -15,20 +15,22 @@ class EduOrderBottomFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentEduOrderBottomBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var eduOrderListener: EduOrderListener
+    private var eduOrderListener: EduOrderListener? = null
 
     // 선택된 정렬 기준
     private var orderType = "new"
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        try {
-            eduOrderListener = context as EduOrderListener
-        } catch (e: ClassCastException) {
-            throw ClassCastException(
-                context.toString()
-            )
-        }
+    interface EduOrderListener {
+        fun orderNew() // 최신순 정렬
+
+        fun orderOld() // 오래된순 정렬
+
+        fun orderEnd() // 마감순 정렬
+    }
+
+    // 외부에서 전달할 Setter Listener
+    fun setListener(eduOrderListener: EduOrderListener) {
+        this.eduOrderListener = eduOrderListener
     }
 
     override fun onCreateView(

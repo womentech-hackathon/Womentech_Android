@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentEduAllBinding
 import com.ssjm.sw_hackathon.education.bottomsheet.EduOrderBottomFragment
-import com.ssjm.sw_hackathon.education.bottomsheet.EduOrderListener
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
 import com.ssjm.sw_hackathon.education.recycler.EducationItemInterface
@@ -20,7 +19,7 @@ import com.ssjm.sw_hackathon.educationApi.apiGetEducationCount
 import com.ssjm.sw_hackathon.educationApi.apiGetEducationInfo
 
 // 교육 > 전체
-class EduAllFragment : Fragment(), EduOrderListener {
+class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
     // ViewBinding Setting
     private var _binding: FragmentEduAllBinding? = null
     private val binding get() = _binding!!
@@ -83,7 +82,7 @@ class EduAllFragment : Fragment(), EduOrderListener {
 
         // 정렬 버튼
         binding.linearSortingBtn.setOnClickListener(View.OnClickListener {
-            val bottomSheet = EduOrderBottomFragment()
+            val bottomSheet = EduOrderBottomFragment().apply { setListener(this@EduAllFragment) }
             bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
         })
 
