@@ -13,7 +13,12 @@
     <string name="on_board_second_step">단계 2/3</string>
     <string name="on_board_third_step">단계 3/3</string>
     <string name="on_board_first_title">재취업 계획 세우기 막막하시죠,\n목표부터 설정해봐요!</string>
-    <string name="on_board_second_title_new">새로운 직업을 가지고\n싶으시군요!</string>
+    <string name="on_board_first_select1">새로운 직업을 갖고 싶어요.</string>
+    <string name="on_board_first_select2">이전 경력을 살리고 싶어요.</string>
+    <string name="on_board_first_select3">잘 모르겠어요,\n다양한 직무 교육을 수강해보고 싶어요.</string>
+    <string name="on_board_not_select">선택 안 하고 홈으로 이동할래요.</string>
+    <string name="on_board_second_select1_title">새로운 직업을 가지고\n싶으시군요!</string>
+
 
     <!-- 메인 -->
     <string name="toast_back_main_page">뒤로가기를 한 번 더 누르시면 앱이 종료됩니다.</string>
