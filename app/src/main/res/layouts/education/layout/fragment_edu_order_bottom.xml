@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="24dp"
+    android:background="@drawable/shape_bottom_sheet_radius"
+    tools:context=".education.bottomsheet.EduOrderBottomFragment">
+
+    <!-- BottomSheet 제목 -->
+    <TextView
+        android:id="@+id/text_order_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="@string/order_title"
+        android:textColor="@color/black02"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- 선택지 -->
+    <LinearLayout
+        android:id="@+id/linear_order_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/text_order_title"
+        android:layout_centerHorizontal="true">
+
+
+        <!-- 최신순 -->
+        <RelativeLayout
+            android:id="@+id/relative_order_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:id="@+id/text_order_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edu_sort_new"
+                android:textColor="@color/gray01"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"/>
+
+            <RelativeLayout
+                android:id="@+id/relative_order_new_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/img_order_new_btn_round"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_check_round_selected"/>
+
+                <ImageView
+                    android:id="@+id/img_order_new_btn_check"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_check"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!-- 오래된순 -->
+        <RelativeLayout
+            android:id="@+id/relative_order_old"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="30dp">
+
+        <TextView
+            android:id="@+id/text_order_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edu_sort_old"
+            android:textColor="@color/gray01"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"/>
+
+            <RelativeLayout
+                android:id="@+id/relative_order_old_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/img_order_old_btn_round"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_check_round_unselected"/>
+
+                <ImageView
+                    android:id="@+id/img_order_old_btn_check"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_check"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!-- 마감순 -->
+        <RelativeLayout
+            android:id="@+id/relative_order_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="40dp">
+
+            <TextView
+                android:id="@+id/text_order_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edu_sort_end"
+                android:textColor="@color/gray01"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"/>
+
+            <RelativeLayout
+                android:id="@+id/relative_order_end_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/img_order_end_btn_round"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_check_round_unselected"/>
+
+                <ImageView
+                    android:id="@+id/img_order_end_btn_check"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_check"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- 완료 버튼 -->
+    <LinearLayout
+        android:id="@+id/linear_order_complete_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/shape_edu_order_btn"
+        android:layout_below="@id/linear_order_menu">
+
+        <TextView
+            android:id="@+id/text_order_complete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_complete"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

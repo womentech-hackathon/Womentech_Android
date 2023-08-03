@@ -1,11 +1,38 @@
 <resources>
-    <string name="app_name">SW-Hackathon</string>
+    <string name="app_name">이루다</string>
 
     <!-- bottom navigation -->
-    <string name="home_title">메인</string>
-    <string name="goal_title">목표</string>
-    <string name="welfare_title">복지</string>
+    <string name="home_title">홈</string>
+    <string name="goal_title">실천</string>
+    <string name="education_title">교육</string>
+    <string name="my_page_title">나</string>
+
+    <!-- 온보딩 -->
+    <string name="next_on_board">다음</string>
+    <string name="on_board_first_step">단계 1/3</string>
+    <string name="on_board_second_step">단계 2/3</string>
+    <string name="on_board_third_step">단계 3/3</string>
+    <string name="on_board_first_title">재취업 계획 세우기 막막하시죠,\n목표부터 설정해봐요!</string>
+    <string name="on_board_first_select1">새로운 직업을 갖고 싶어요.</string>
+    <string name="on_board_first_select2">이전 경력을 살리고 싶어요.</string>
+    <string name="on_board_first_select3">잘 모르겠어요,\n다양한 직무 교육을 수강해보고 싶어요.</string>
+    <string name="on_board_not_select">선택 안 하고 홈으로 이동할래요.</string>
+    <string name="on_board_second_select1_title">새로운 직업을 가지고\n싶으시군요!</string>
+
 
     <!-- 메인 -->
     <string name="toast_back_main_page">뒤로가기를 한 번 더 누르시면 앱이 종료됩니다.</string>
+
+    <!-- 교육 -->
+    <string name="info_education">중장년을 위한\n교육 정보입니다.</string>
+    <string name="edu_filter_all">모두보기</string>
+    <string name="edu_filter_ing">접수중</string>
+    <string name="edu_filter_end">마감</string>
+    <string name="edu_bookmark">찜</string>
+    <string name="edu_sort_new">최신순</string>
+    <string name="edu_sort_old">오래된순</string>
+    <string name="edu_sort_end">마감순</string>
+    <string name="order_title">정렬 설정</string>
+    <string name="order_complete">적용</string>
+    <string name="notice_bookmark">최근 찜한 순서대로 보여집니다.</string>
 </resources>

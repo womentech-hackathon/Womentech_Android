@@ -3,18 +3,26 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+// 프로퍼티를 선언하고, 저장한 키값을 불러온다.
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
-    namespace 'com.clone.sw_hackathon'
+    namespace 'com.ssjm.sw_hackathon'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.clone.sw_hackathon"
+        applicationId "com.ssjm.sw_hackathon"
         minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 프로젝트 내에서 언제든지 사용이 가능한 변수들이다.
+        // 타입 - 키 - 값으로 저장된다.
+        buildConfigField "String", "SEOUL_OPEN_API_KEY", properties['seoul_open_api_key']
     }
 
     buildTypes {
@@ -27,10 +35,13 @@ android {
     sourceSets {
         main {
             res.srcDirs = [
+                    'src/main/res/layouts/account',
+                    'src/main/res/layouts/on-boarding',
                     'src/main/res/layouts/bottom-navi',
                     'src/main/res/layouts/home',
                     'src/main/res/layouts/goal',
-                    'src/main/res/layouts/welfare',
+                    'src/main/res/layouts/education',
+                    'src/main/res/layouts/my-page',
                     'src/main/res/layouts',
                     'src/main/res'
             ]
@@ -62,4 +73,13 @@ dependencies {
     def nav_version = "2.5.3"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // Retrofit2, gson 의존성 추가
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+
+    //Okhttp3
+    implementation 'com.squareup.okhttp3:okhttp:4.8.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.8.0'
 }
