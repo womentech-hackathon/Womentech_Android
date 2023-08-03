@@ -20,4 +20,19 @@
         <item name="android:textSize">13sp</item>
     </style>
 
+    <!-- 교육 정보 탭 글자 크기 & 스타일 -->
+    <style name="education_tab_text" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- bottom sheet rounding을 위한-->
+    <style name="BottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
+    <style name="BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
 </resources>

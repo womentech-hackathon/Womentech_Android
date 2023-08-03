@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- gray -->
     <color name="gray_AB">#ABABAB</color>
+    <color name="gray_60">#606060</color>
+    <color name="gray_C3">#C3C3C3</color>
+    <color name="gray_EB">#EBEBEB</color>
+    <color name="gray_D9">#D9D9D9</color>
+
+    <color name="gray01">#28323C</color>
+    <color name="gray02">#434E58</color>
+    <color name="gray03">#707882</color>
+    <color name="gray04">#A8B0B9</color>
+    <color name="gray05">#D4D6DC</color>
+    <color name="gray06">#E9EBEE</color>
+    <color name="gray07">#F7F8F9</color>
+
+    <color name="black">#FF000000</color>
+    <color name="black01">#111111</color>
+    <color name="black02">#171717</color>
+
+    <!-- app color -->
+    <color name="main_color_1">#5C82FC</color>
+    <color name="gradient_blue">#593F75FF</color>
+    <color name="search_icon">#191F28</color>
+    <color name="blue">#2764FF</color>
+    <color name="red">#FF2640</color>
+    <color name="blue_transparent">#0D2764FF</color>
+    <color name="red_transparent">#0DFF2640</color>
 </resources>
