@@ -6,7 +6,8 @@
     android:paddingHorizontal="20dp"
     android:paddingVertical="24dp"
     android:background="@drawable/shape_bottom_sheet_radius"
-    tools:context=".education.bottomsheet.EduOrderBottomFragment">
+    tools:context=".education.bottomsheet.EduOrderBottomFragment"
+    android:clickable="true">
 
     <!-- BottomSheet 제목 -->
     <TextView

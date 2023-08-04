@@ -20,13 +20,16 @@
     <color name="black">#FF000000</color>
     <color name="black01">#111111</color>
     <color name="black02">#171717</color>
+    <color name="black03">#1C1C1C</color>
 
     <!-- app color -->
     <color name="main_color_1">#5C82FC</color>
+    <color name="main_color_2">#FFDC62</color>
     <color name="gradient_blue">#593F75FF</color>
     <color name="search_icon">#191F28</color>
     <color name="blue">#2764FF</color>
     <color name="red">#FF2640</color>
     <color name="blue_transparent">#0D2764FF</color>
     <color name="red_transparent">#0DFF2640</color>
+    <color name="yellow_transparent">#CCFFDC62</color>
 </resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".onBoarding.end.EndOnBoardFragment"
+    android:background="@color/white"
+    android:clickable="true">
+
+    <!-- 이전으로 이동 -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="12dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_back_btn"/>
+
+    <!-- 설명 -->
+    <TextView
+        android:id="@+id/text_second_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/on_board_end_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black01"
+        android:layout_below="@id/btn_back"/>
+
+    <!-- 다음 단계로 -->
+    <LinearLayout
+        android:id="@+id/linear_end_onboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="26dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/main_color_1"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/text_view_edu_onboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/done_on_board"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
