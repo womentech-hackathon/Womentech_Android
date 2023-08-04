@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:background="@drawable/shape_select_day_selected">
+            android:background="@drawable/shape_edu_filter_blue">
 
             <TextView
                 android:id="@+id/text_edu_filter_all"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:background="@drawable/shape_select_day_unselected">
+            android:background="@drawable/shape_edu_filter_gray">
 
             <TextView
                 android:id="@+id/text_edu_filter_ing"
@@ -62,7 +62,7 @@
             android:id="@+id/linear_edu_filter_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_select_day_unselected">
+            android:background="@drawable/shape_edu_filter_gray">
 
             <TextView
                 android:id="@+id/text_edu_filter_end"

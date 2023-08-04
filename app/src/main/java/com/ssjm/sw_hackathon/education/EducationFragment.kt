@@ -51,7 +51,7 @@ class EducationFragment : Fragment() {
     }
 
     fun addEducationCount(count: Int) {
-        initViewPager(count, 0)
+        initViewPager(count, 2)
     }
 
     // viewPager 세팅

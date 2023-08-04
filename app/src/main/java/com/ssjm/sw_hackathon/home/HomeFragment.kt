@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         )
         binding.recyclerviewHomeTodo.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerviewHomeTodo.adapter = homeTodoAdapter
-        binding.recyclerviewHomeTodo.isNestedScrollingEnabled = true
+        binding.recyclerviewHomeTodo.isNestedScrollingEnabled = false
         homeTodoAdapter.items = homeTodoItems!!
     }
 

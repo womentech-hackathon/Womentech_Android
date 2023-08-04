@@ -122,7 +122,7 @@
         android:id="@+id/recyclerview_home_todo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:paddingLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="48dp"
         android:layout_below="@id/relative_home_title"
@@ -131,5 +131,49 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_todo_of_home"/>
 
+    <!-- 교육 목록 -->
+    <RelativeLayout
+        android:id="@+id/relative_edu_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray07"
+        android:layout_below="@id/recyclerview_home_todo"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/text_name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="20dp"
+            android:text="우먼테크"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/black01" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:layout_marginRight="20dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp"
+            android:text="@string/show_all"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/shape_show_all_btn"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_edu_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/text_name2"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
