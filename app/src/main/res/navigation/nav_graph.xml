@@ -10,7 +10,13 @@
         android:id="@+id/menu_home"
         android:name="com.ssjm.sw_hackathon.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_menu_home_to_education"
+            app:destination="@id/menu_education" />
+
+    </fragment>
 
     <!-- 실천 탭 -->
     <fragment
@@ -24,7 +30,11 @@
         android:id="@+id/menu_education"
         android:name="com.ssjm.sw_hackathon.education.EducationFragment"
         android:label="fragment_education"
-        tools:layout="@layout/fragment_education" />
+        tools:layout="@layout/fragment_education" >
+        <action
+            android:id="@+id/action_menu_education_to_home"
+            app:destination="@id/menu_home" />
+    </fragment>
 
     <!-- 마이페이지 탭 -->
     <fragment

@@ -43,6 +43,66 @@
         android:textColor="@color/black01"
         android:layout_below="@id/text_second_step"/>
 
+    <!-- 할 수 있는 거 -->
+    <LinearLayout
+        android:id="@+id/linear_yet_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingHorizontal="14dp"
+        android:background="@drawable/shape_yet_info_background"
+        android:orientation="vertical"
+        android:layout_below="@id/text_second_title">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:text="@string/on_board_yet_info1"
+            android:textColor="@color/gray01"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray06"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:text="@string/on_board_yet_info2"
+            android:textColor="@color/gray01"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_more_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/on_board_yet_more"
+        android:textColor="@color/main_color_1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_above="@id/img_more_info"/>
+    
+    <ImageView
+        android:id="@+id/img_more_info"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/ic_on_board_more_info"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/linear_view_edu_onboard"/>
+
     <!-- 다음 단계로 -->
     <LinearLayout
         android:id="@+id/linear_view_edu_onboard"

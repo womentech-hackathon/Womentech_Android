@@ -42,6 +42,11 @@ class SecondYetOnBoardFragment : Fragment() {
             requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
             requireActivity().supportFragmentManager.popBackStack()
         }
+
+        // 교육 정보 보기
+        binding.linearViewEduOnboard.setOnClickListener(View.OnClickListener {
+            activity?.viewEdu()
+        })
     }
 
     override fun onDestroy() {

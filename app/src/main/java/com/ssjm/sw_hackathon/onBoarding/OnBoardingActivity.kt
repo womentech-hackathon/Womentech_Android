@@ -53,6 +53,13 @@ class OnBoardingActivity : AppCompatActivity() {
         finish()
     }
 
+    // 잘 모르겠어요 > 교육 정보 보기
+    fun viewEdu() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     private var doubleBackToExit = false
     override fun onBackPressed() {
         if (doubleBackToExit) {
