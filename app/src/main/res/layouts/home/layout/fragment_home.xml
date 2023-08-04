@@ -183,6 +183,7 @@
                     android:layout_below="@id/text_name2" />
 
                 <TextView
+                    android:id="@+id/text_show_all_edu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="31dp"

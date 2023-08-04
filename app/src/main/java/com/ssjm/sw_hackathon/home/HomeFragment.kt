@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentHomeBinding
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
@@ -55,6 +57,11 @@ class HomeFragment : Fragment() {
                 addEducationItems(it)
             }
         )
+
+        binding.textShowAllEdu.setOnClickListener(View.OnClickListener {
+
+            view?.findNavController()?.navigate(R.id.action_menu_home_to_education)
+        })
     }
 
     // recyclerview 세팅
