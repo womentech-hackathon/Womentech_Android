@@ -1,14 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".goal.GoalFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:clickable="true">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="목표" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 사용방법 버튼 -->
+            <TextView
+                android:id="@+id/text_help_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingVertical="6dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/help_btn"
+                android:textSize="14sp"
+                android:textColor="@color/black03"
+                android:background="@drawable/shape_help_btn"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"/>
+
+            <!-- 제목 -->
+            <RelativeLayout
+                android:id="@+id/relative_todo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/text_help_btn">
+
+                <!-- 직업 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constaint_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="11dp"
+                        app:layout_constraintStart_toStartOf="@id/text_job"
+                        app:layout_constraintBottom_toBottomOf="@id/text_job"
+                        app:layout_constraintEnd_toEndOf="@id/text_job"
+                        android:background="@color/yellow_transparent"/>
+
+                    <TextView
+                        android:id="@+id/text_job"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="바리스타"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black01"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/text_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goal_title1"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_toEndOf="@id/constaint_job" />
+
+                <TextView
+                    android:id="@+id/text_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/goal_title2"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_below="@id/constaint_job" />
+
+            </RelativeLayout>
+
+            <!-- 주차 이동 -->
+            <LinearLayout
+                android:id="@+id/linear_move_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@id/relative_todo_title"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageButton
+                    android:id="@+id/btn_move_week_left"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_move_left_week"
+                    android:background="@drawable/shape_move_week_btn"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="8월 1주차"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_move_week_right"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_move_right_week"
+                    android:background="@drawable/shape_move_week_btn"
+                    android:scaleType="fitXY"/>
+
+            </LinearLayout>
+
+            <!-- 일자 표시 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_goal_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_below="@id/linear_move_week"
+                android:layout_alignParentStart="true"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_day_of_todo"
+                android:gravity="center"/>
+
+            <!-- 실천사항 내용 -->
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

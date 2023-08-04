@@ -16,6 +16,7 @@
     <color name="gray05">#D4D6DC</color>
     <color name="gray06">#E9EBEE</color>
     <color name="gray07">#F7F8F9</color>
+    <color name="gray08">#FAFAFA</color>
 
     <color name="black">#FF000000</color>
     <color name="black01">#111111</color>
@@ -32,4 +33,8 @@
     <color name="blue_transparent">#0D2764FF</color>
     <color name="red_transparent">#0DFF2640</color>
     <color name="yellow_transparent">#CCFFDC62</color>
+
+    <color name="todo_done">#00C67E</color>
+    <color name="todo_fail">#FF586C</color>
+    <color name="todo_some">#FFB800</color>
 </resources>

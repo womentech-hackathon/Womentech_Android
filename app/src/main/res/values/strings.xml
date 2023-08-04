@@ -63,6 +63,10 @@
     <string name="home_bookmark_title1">님이</string>
     <string name="home_bookmark_title2">찜한 교육 정보</string>
 
+    <!-- 실천 -->
+    <string name="goal_title1">을(를) 향한</string>
+    <string name="goal_title2">오늘의 실천사항입니다:)</string>
+
     <!-- 교육 -->
     <string name="info_education">중장년을 위한\n교육 정보입니다.</string>
     <string name="edu_filter_all">모두보기</string>
