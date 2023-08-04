@@ -7,7 +7,123 @@
     android:background="@color/white"
     android:clickable="true">
 
+    <!-- 이전으로 이동 -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="12dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_back_btn"/>
 
+    <!-- 단계 표시 -->
+    <TextView
+        android:id="@+id/text_third_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/on_board_third_step"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/main_color_1"/>
+
+    <!-- 설명 -->
+    <TextView
+        android:id="@+id/text_third_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/on_board_third_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black01"
+        android:layout_below="@id/text_third_step"/>
+
+    <!-- 입력 -->
+    <LinearLayout
+        android:id="@+id/linear_third_input1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/text_third_title"
+        android:gravity="center_vertical">
+
+        <!-- 입력창 -->
+        <EditText
+            android:id="@+id/edit_onboard_third1"
+            android:layout_width="wrap_content"
+            android:minWidth="166dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/on_board_third_input_hint1"
+            android:textColorHint="@color/gray05"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:backgroundTint="@color/main_color_1"/>
+
+        <!-- 안내 문구 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:text="@string/on_board_third_input_notice1"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <!-- 입력 -->
+    <LinearLayout
+        android:id="@+id/linear_third_input2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/linear_third_input1"
+        android:gravity="center_vertical">
+
+        <!-- 안내 문구 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="@string/on_board_third_input_notice2"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <!-- 입력창 -->
+        <EditText
+            android:id="@+id/edit_onboard_third2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/on_board_third_input_hint2"
+            android:textColorHint="@color/gray05"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:backgroundTint="@color/main_color_1"
+            android:focusable="false"/>
+
+        <!-- 안내 문구 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:text="@string/on_board_third_input_notice3"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
     <!-- 시작하기 -->
     <LinearLayout

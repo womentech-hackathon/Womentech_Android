@@ -30,6 +30,12 @@
     <string name="on_board_second_select2_input_notice">(였)이었어요.</string>|
     <string name="toast_unselect_second_job">원하는 직업을 선택해 주세요.</string>
     <string name="toast_unselect_second2_job">이전 직업을 입력해 주세요.</string>
+    <string name="on_board_third_title">해당 직업을 갖기 위해\n하루하루 실천해야 할 것을\n적어주세요.</string>
+    <string name="on_board_third_input_notice1">(을)를</string>
+    <string name="on_board_third_input_notice2">매주</string>
+    <string name="on_board_third_input_notice3">요일마다 신청할 거예요.</string>
+    <string name="on_board_third_input_hint1">예시) 자격증 공부</string>
+    <string name="on_board_third_input_hint2">요일 선택</string>
 
     <!-- 메인 -->
     <string name="toast_back_main_page">뒤로가기를 한 번 더 누르시면 앱이 종료됩니다.</string>

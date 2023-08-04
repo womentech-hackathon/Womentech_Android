@@ -96,6 +96,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
             android:text="@string/on_board_second_select1_input_notice"
             android:textColor="@color/black02"
             android:textStyle="bold"
