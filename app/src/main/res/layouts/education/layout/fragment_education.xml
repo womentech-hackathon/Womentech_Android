@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".education.EducationFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:clickable="true">
 
     <RelativeLayout
         android:id="@+id/relative_header"

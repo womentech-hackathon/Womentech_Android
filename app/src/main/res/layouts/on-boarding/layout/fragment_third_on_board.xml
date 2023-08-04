@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".onBoarding.third.ThirdOnBoardFragment"
+    android:background="@color/white"
+    android:clickable="true">
+
+    <!-- 이전으로 이동 -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="12dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_back_btn"/>
+
+    <!-- 단계 표시 -->
+    <TextView
+        android:id="@+id/text_third_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/on_board_third_step"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/main_color_1"/>
+
+    <!-- 설명 -->
+    <TextView
+        android:id="@+id/text_third_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/on_board_third_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black01"
+        android:layout_below="@id/text_third_step"/>
+
+    <!-- 입력 -->
+    <LinearLayout
+        android:id="@+id/linear_third_input1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/text_third_title"
+        android:gravity="center_vertical">
+
+        <!-- 입력창 -->
+        <EditText
+            android:id="@+id/edit_onboard_third1"
+            android:layout_width="wrap_content"
+            android:minWidth="166dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/on_board_third_input_hint1"
+            android:textColorHint="@color/gray05"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:backgroundTint="@color/main_color_1"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionDone"/>
+
+        <!-- 안내 문구 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:text="@string/on_board_third_input_notice1"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <!-- 입력 -->
+    <LinearLayout
+        android:id="@+id/linear_third_input2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/linear_third_input1"
+        android:gravity="center_vertical">
+
+        <!-- 안내 문구 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="@string/on_board_third_input_notice2"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <!-- 입력창 -->
+        <EditText
+            android:id="@+id/edit_onboard_third2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/on_board_third_input_hint2"
+            android:textColorHint="@color/gray05"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:backgroundTint="@color/main_color_1"
+            android:focusable="false"/>
+
+        <!-- 안내 문구 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:text="@string/on_board_third_input_notice3"
+            android:textColor="@color/black02"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <!-- 시작하기 -->
+    <LinearLayout
+        android:id="@+id/linear_done_onboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="26dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/main_color_1"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/text_done_onboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_on_board"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <!-- 요일 선택 -->
+    <LinearLayout
+        android:id="@+id/linear_select_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="20dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/shape_bottom_sheet_radius"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:elevation="10dp"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:text="@string/on_board_third_input_hint2"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/black02"/>
+
+        <!-- 요일 선택지 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4.5dp"
+                android:paddingVertical="7dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/monday"
+                android:textColor="@color/main_color_1"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_select_day_unselected"/>
+
+            <TextView
+                android:id="@+id/text_tuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4.5dp"
+                android:paddingVertical="7dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/tuesday"
+                android:textColor="@color/main_color_1"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_select_day_unselected"/>
+
+            <TextView
+                android:id="@+id/text_wednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4.5dp"
+                android:paddingVertical="7dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/wednesday"
+                android:textColor="@color/main_color_1"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_select_day_unselected"/>
+
+            <TextView
+                android:id="@+id/text_thursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4.5dp"
+                android:paddingVertical="7dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/thursday"
+                android:textColor="@color/main_color_1"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_select_day_unselected"/>
+
+            <TextView
+                android:id="@+id/text_friday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4.5dp"
+                android:paddingVertical="7dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/friday"
+                android:textColor="@color/main_color_1"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_select_day_unselected"/>
+
+            <TextView
+                android:id="@+id/text_saturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4.5dp"
+                android:paddingVertical="7dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/saturday"
+                android:textColor="@color/main_color_1"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_select_day_unselected"/>
+
+            <TextView
+                android:id="@+id/text_sunday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4.5dp"
+                android:paddingVertical="7dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/sunday"
+                android:textColor="@color/main_color_1"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_select_day_unselected"/>
+            
+        </LinearLayout>
+
+        <!-- 요일 선택 완료 버튼 -->
+        <LinearLayout
+            android:id="@+id/linear_done_select_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:paddingVertical="15dp"
+            android:background="@drawable/shape_unselected"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/on_board_third_select_done"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

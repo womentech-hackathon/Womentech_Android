@@ -1,6 +1,8 @@
 package com.ssjm.sw_hackathon.education.tab
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +45,21 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
     // 현재 페이지
     private var page = 1
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        filter = "all"
+        orderType = "new"
+        page = 1
+
+        // 서울시 어르신 취업지원센터 교육정보 조회
+        apiGetEducationCount(
+            addEducationCount = {
+                getEducation(it)
+            }
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,12 +75,12 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         // recyclerview 세팅
         initRecycler()
 
-        // 서울시 어르신 취업지원센터 교육정보 개수 조회
-        apiGetEducationCount(
+        // 서울시 어르신 취업지원센터 교육정보 조회
+        /*apiGetEducationCount(
             addEducationCount = {
                 getEducation(it)
             }
-        )
+        )*/
 
         // 모두보기 필터 선택
         binding.linearEduFilterAll.setOnClickListener(View.OnClickListener {
@@ -82,7 +99,10 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
 
         // 정렬 버튼
         binding.linearSortingBtn.setOnClickListener(View.OnClickListener {
+            val bundle = Bundle()
+            bundle.putString("orderType", orderType)
             val bottomSheet = EduOrderBottomFragment().apply { setListener(this@EduAllFragment) }
+            bottomSheet.arguments = bundle
             bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
         })
 
@@ -297,6 +317,8 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         if(filter == "all") filterAll()
         else if(filter == "ing") filterIng()
         else if(filter == "end") filterEnd()
+
+        binding.textSortingBtn.text = "최신순"
     }
 
     // 오래된순 정렬
@@ -309,6 +331,8 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         if(filter == "all") filterAll()
         else if(filter == "ing") filterIng()
         else if(filter == "end") filterEnd()
+
+        binding.textSortingBtn.text = "오래된순"
     }
 
     // 마감순 정렬
@@ -325,6 +349,8 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         if(filter == "all") filterAll()
         else if(filter == "ing") filterIng()
         else if(filter == "end") filterEnd()
+
+        binding.textSortingBtn.text = "마감순"
     }
 
     override fun onDestroy() {

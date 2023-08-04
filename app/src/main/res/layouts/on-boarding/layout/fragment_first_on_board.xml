@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".onBoarding.FirstOnBoardFragment"
-    android:background="@color/white">
+    tools:context=".onBoarding.first.FirstOnBoardFragment"
+    android:background="@color/white"
+    android:clickable="true">
 
     <!-- 단계 표시 -->
     <TextView
@@ -35,7 +36,7 @@
         android:id="@+id/linear_first_goal_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="58dp"
         android:orientation="vertical"
         android:layout_below="@id/text_first_title">
 
@@ -50,9 +51,10 @@
             android:background="@drawable/shape_onboard_step1_btn"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:elevation="5dp">
+            android:elevation="3dp">
 
             <TextView
+                android:id="@+id/text_first_select1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/on_board_first_select1"
@@ -73,9 +75,10 @@
             android:background="@drawable/shape_onboard_step1_btn"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:elevation="5dp">
+            android:elevation="3dp">
 
             <TextView
+                android:id="@+id/text_first_select2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/on_board_first_select2"
@@ -96,9 +99,10 @@
             android:background="@drawable/shape_onboard_step1_btn"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:elevation="5dp">
+            android:elevation="3dp">
 
             <TextView
+                android:id="@+id/text_first_select3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/on_board_first_select3"

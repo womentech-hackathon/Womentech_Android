@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="191dp"
+    android:layout_height="233dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginRight="16dp">
+
+    <ImageView
+        android:id="@+id/img_todo_cover"
+        android:layout_width="191dp"
+        android:layout_height="233dp"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true"
+        android:src="@drawable/img_todo_note1"
+        android:background="@drawable/shape_todo_cover_radius"/>
+
+    <!-- 실천사항 내용 -->
+    <TextView
+        android:id="@+id/text_todo_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="14dp"
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="10dp"
+        android:text="노트에 필사하기"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_todo_title"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <!-- 실천 기간 -->
+    <TextView
+        android:id="@+id/text_todo_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="14dp"
+        android:text="66일째 실천중"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/main_color_2"
+        android:layout_below="@id/text_todo_content"
+        android:layout_alignParentStart="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_home_todo_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_todo_day"/>
+
+</RelativeLayout>
