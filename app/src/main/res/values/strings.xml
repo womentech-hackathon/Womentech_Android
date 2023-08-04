@@ -36,6 +36,17 @@
     <string name="on_board_third_input_notice3">요일마다 신청할 거예요.</string>
     <string name="on_board_third_input_hint1">예시) 자격증 공부</string>
     <string name="on_board_third_input_hint2">요일 선택</string>
+    <string name="on_board_third_select_done">선택 완료</string>
+    <string name="monday">월</string>
+    <string name="tuesday">화</string>
+    <string name="wednesday">수</string>
+    <string name="thursday">목</string>
+    <string name="friday">금</string>
+    <string name="saturday">토</string>
+    <string name="sunday">일</string>
+    <string name="toast_unselect_day">실천할 요일을 선택해 주세요.</string>
+    <string name="toast_unselect_todo">실천할 일을 입력해 주세요.</string>
+    <string name="on_board_end_title">실천사항을 모두\n입력했어요!\n\n열심히 계획을 세웠으니\n이제 실천을 시작해볼까요?</string>
 
     <!-- 메인 -->
     <string name="toast_back_main_page">뒤로가기를 한 번 더 누르시면 앱이 종료됩니다.</string>

@@ -231,15 +231,15 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         educationAdapter.notifyDataSetChanged()
 
         // 모두보기 선택
-        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_edu_filter_blue)
+        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_select_day_selected)
         binding.textEduFilterAll.setTextColor(requireContext().getColor(R.color.white))
 
         // 접수중 해제
-        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_select_day_unselected)
         binding.textEduFilterIng.setTextColor(requireContext().getColor(R.color.gray05))
 
         // 마감 해제
-        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_select_day_unselected)
         binding.textEduFilterEnd.setTextColor(requireContext().getColor(R.color.gray05))
     }
 
@@ -260,15 +260,15 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         educationAdapter.notifyDataSetChanged()
 
         // 모두보기 해제
-        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_select_day_unselected)
         binding.textEduFilterAll.setTextColor(requireContext().getColor(R.color.gray05))
 
         // 접수중 선택
-        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_edu_filter_blue)
+        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_select_day_selected)
         binding.textEduFilterIng.setTextColor(requireContext().getColor(R.color.white))
 
         // 마감 해제
-        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_select_day_unselected)
         binding.textEduFilterEnd.setTextColor(requireContext().getColor(R.color.gray05))
     }
 
@@ -289,15 +289,15 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         educationAdapter.notifyDataSetChanged()
 
         // 모두보기 해제
-        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_select_day_unselected)
         binding.textEduFilterAll.setTextColor(requireContext().getColor(R.color.gray05))
 
         // 접수중 해제
-        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_select_day_unselected)
         binding.textEduFilterIng.setTextColor(requireContext().getColor(R.color.gray05))
 
         // 마감 선택
-        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_edu_filter_blue)
+        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_select_day_selected)
         binding.textEduFilterEnd.setTextColor(requireContext().getColor(R.color.white))
     }
 

@@ -90,7 +90,10 @@
             android:textColor="@color/black02"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:backgroundTint="@color/main_color_1"/>
+            android:backgroundTint="@color/main_color_1"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionDone"/>
 
         <!-- 안내 문구 -->
         <TextView

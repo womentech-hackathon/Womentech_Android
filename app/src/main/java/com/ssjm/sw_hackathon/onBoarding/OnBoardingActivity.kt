@@ -47,6 +47,12 @@ class OnBoardingActivity : AppCompatActivity() {
         finish()
     }
 
+    fun selectAndGoHome(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     private var doubleBackToExit = false
     override fun onBackPressed() {
         if (doubleBackToExit) {

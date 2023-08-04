@@ -1,4 +1,4 @@
-package com.ssjm.sw_hackathon.onBoarding.second
+package com.ssjm.sw_hackathon.onBoarding.end
 
 import android.content.Context
 import android.os.Bundle
@@ -6,15 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ssjm.sw_hackathon.R
-import com.ssjm.sw_hackathon.databinding.FragmentSecondYetOnBoardBinding
+import com.ssjm.sw_hackathon.databinding.FragmentEndOnBoardBinding
 import com.ssjm.sw_hackathon.onBoarding.OnBoardingActivity
 
 
-// 온보딩 Step2 > 잘 모르겠어요, 다양한 직무 교육을 수강해보고 싶어요.
-class SecondYetOnBoardFragment : Fragment() {
+class EndOnBoardFragment : Fragment() {
     // ViewBinding Setting
-    private var _binding: FragmentSecondYetOnBoardBinding? = null
+    private var _binding: FragmentEndOnBoardBinding? = null
     private val binding get() = _binding!!
 
     // 프래그먼트 전환을 위해
@@ -29,7 +27,7 @@ class SecondYetOnBoardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSecondYetOnBoardBinding.inflate(layoutInflater)
+        _binding = FragmentEndOnBoardBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -42,6 +40,11 @@ class SecondYetOnBoardFragment : Fragment() {
             requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
             requireActivity().supportFragmentManager.popBackStack()
         }
+
+        // 시작하기
+        binding.linearEndOnboard.setOnClickListener(View.OnClickListener {
+            activity?.selectAndGoHome()
+        })
     }
 
     override fun onDestroy() {
