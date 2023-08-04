@@ -11,5 +11,8 @@
         android:id="@+id/fragment_on_boarding"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff" />
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>

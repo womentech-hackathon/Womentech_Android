@@ -1,5 +1,6 @@
 package com.ssjm.sw_hackathon.education.tab
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -43,6 +44,19 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
     // 현재 페이지
     private var page = 1
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        page = 1
+
+        // 서울시 어르신 취업지원센터 교육정보 조회
+        apiGetEducationCount(
+            addEducationCount = {
+                getEducation(it)
+            }
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,12 +72,12 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         // recyclerview 세팅
         initRecycler()
 
-        // 서울시 어르신 취업지원센터 교육정보 개수 조회
-        apiGetEducationCount(
+        // 서울시 어르신 취업지원센터 교육정보 조회
+        /*apiGetEducationCount(
             addEducationCount = {
                 getEducation(it)
             }
-        )
+        )*/
 
         // 모두보기 필터 선택
         binding.linearEduFilterAll.setOnClickListener(View.OnClickListener {

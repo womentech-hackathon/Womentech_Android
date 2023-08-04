@@ -17,8 +17,13 @@
     <string name="on_board_first_select2">이전 경력을 살리고 싶어요.</string>
     <string name="on_board_first_select3">잘 모르겠어요,\n다양한 직무 교육을 수강해보고 싶어요.</string>
     <string name="on_board_not_select">선택 안 하고 홈으로 이동할래요.</string>
-    <string name="on_board_second_select1_title">새로운 직업을 가지고\n싶으시군요!</string>
-
+    <string name="toast_unselect_first">원하는 목표를 선택해 주세요.</string>
+    <string name="on_board_second_select1_title">새로운 직업을 가지고\n싶으시군요!\n\n어떤 직업을 원하시나요?</string>
+    <string name="on_board_second_select1_hint_btn">예시 보기</string>
+    <string name="on_board_second_select1_tool_tip">5060에게 떠오르는 신직업으로\n드론조종사, 귀농귀촌플래너, 도시농업관리사, 웰다잉전문가, 진로체험코디네이터 등이 있어요.</string>
+    <string name="on_board_second_select1_input_hint">예시) 바리스타</string>
+    <string name="on_board_second_select1_input_notice">이(가) 되고 싶어요.</string>
+    <string name="toast_unselect_second_job">원하는 직업을 선택해 주세요.</string>
 
     <!-- 메인 -->
     <string name="toast_back_main_page">뒤로가기를 한 번 더 누르시면 앱이 종료됩니다.</string>
