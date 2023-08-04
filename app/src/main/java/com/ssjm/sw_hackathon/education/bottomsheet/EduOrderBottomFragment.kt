@@ -45,68 +45,85 @@ class EduOrderBottomFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        orderType = arguments?.getString("orderType")!!
+        if(orderType == "new") orderNew()
+        else if(orderType == "old") orderOld()
+        else if(orderType == "end") orderEnd()
+
         // 최신순 정렬 선택
         binding.relativeOrderNewBtn.setOnClickListener(View.OnClickListener {
-            orderType = "new"
-
-            // 최신순 선택
-            binding.imgOrderNewBtnRound.setImageResource(R.drawable.ic_check_round_selected)
-
-            // 오래된순 해제
-            binding.imgOrderOldBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
-
-            // 마감순 해체
-            binding.imgOrderEndBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
+            orderNew()
         })
 
         // 오래된순 정렬 선택
         binding.relativeOrderOldBtn.setOnClickListener(View.OnClickListener {
-            orderType = "old"
-
-            // 최신순 해제
-            binding.imgOrderNewBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
-
-            // 오래된순 선택
-            binding.imgOrderOldBtnRound.setImageResource(R.drawable.ic_check_round_selected)
-
-            // 마감순 해체
-            binding.imgOrderEndBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
+            orderOld()
         })
 
         // 마감순 정렬 선택
         binding.relativeOrderEndBtn.setOnClickListener(View.OnClickListener {
-            orderType = "end"
-
-            // 최신순 해제
-            binding.imgOrderNewBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
-
-            // 오래된순 해제
-            binding.imgOrderOldBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
-
-            // 마감순 선택
-            binding.imgOrderEndBtnRound.setImageResource(R.drawable.ic_check_round_selected)
+            orderEnd()
         })
 
         // 적용 버튼 선택
-        /*binding.linearOrderCompleteBtn.setOnClickListener(View.OnClickListener {
+        binding.linearOrderCompleteBtn.setOnClickListener(View.OnClickListener {
             // 최신순
             if(orderType == "new") {
-                eduOrderListener.orderNew()
+                eduOrderListener?.orderNew()
             }
 
             // 오래된순
             if(orderType == "old") {
-                eduOrderListener.orderOld()
+                eduOrderListener?.orderOld()
             }
 
             // 마감순
             if(orderType == "end") {
-                eduOrderListener.orderEnd()
+                eduOrderListener?.orderEnd()
             }
 
             dismiss()
-        })*/
+        })
 
+    }
+
+    fun orderNew() {
+        orderType = "new"
+
+        // 최신순 선택
+        binding.imgOrderNewBtnRound.setImageResource(R.drawable.ic_check_round_selected)
+
+        // 오래된순 해제
+        binding.imgOrderOldBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
+
+        // 마감순 해체
+        binding.imgOrderEndBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
+    }
+
+    fun orderOld() {
+        orderType = "old"
+
+        // 최신순 해제
+        binding.imgOrderNewBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
+
+        // 오래된순 선택
+        binding.imgOrderOldBtnRound.setImageResource(R.drawable.ic_check_round_selected)
+
+        // 마감순 해체
+        binding.imgOrderEndBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
+    }
+
+    fun orderEnd() {
+        orderType = "end"
+
+        // 최신순 해제
+        binding.imgOrderNewBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
+
+        // 오래된순 해제
+        binding.imgOrderOldBtnRound.setImageResource(R.drawable.ic_check_round_unselected)
+
+        // 마감순 선택
+        binding.imgOrderEndBtnRound.setImageResource(R.drawable.ic_check_round_selected)
     }
 
     override fun onDestroy() {

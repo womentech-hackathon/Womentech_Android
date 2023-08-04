@@ -8,172 +8,208 @@
     android:background="@color/white"
     android:clickable="true">
 
-    <!-- 사용방법 버튼 -->
-    <TextView
-        android:id="@+id/text_help_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:paddingVertical="6dp"
-        android:paddingHorizontal="12dp"
-        android:text="@string/help_btn"
-        android:textSize="14sp"
-        android:textColor="@color/black03"
-        android:background="@drawable/shape_help_btn"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <!-- 제목 -->
-    <RelativeLayout
-        android:id="@+id/relative_home_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/text_help_btn">
-
-        <!-- 직업 -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constaint_job"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            
-            <View
-                android:layout_width="0dp"
-                android:layout_height="11dp"
-                app:layout_constraintStart_toStartOf="@id/text_job"
-                app:layout_constraintBottom_toBottomOf="@id/text_job"
-                app:layout_constraintEnd_toEndOf="@id/text_job"
-                android:background="@color/yellow_transparent"/>
-            
+
+            <!-- 사용방법 버튼 -->
             <TextView
-                android:id="@+id/text_job"
+                android:id="@+id/text_help_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="바리스타"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:textColor="@color/black01"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingVertical="6dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/help_btn"
+                android:textSize="14sp"
+                android:textColor="@color/black03"
+                android:background="@drawable/shape_help_btn"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- 제목 -->
+            <RelativeLayout
+                android:id="@+id/relative_home_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/text_help_btn">
 
-        <TextView
-            android:id="@+id/text_title1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/home_title1"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/black01"
-            android:layout_toEndOf="@id/constaint_job" />
+                <!-- 직업 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constaint_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/text_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="우먼테크"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/black01"
-            android:layout_below="@id/constaint_job" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="11dp"
+                        app:layout_constraintStart_toStartOf="@id/text_job"
+                        app:layout_constraintBottom_toBottomOf="@id/text_job"
+                        app:layout_constraintEnd_toEndOf="@id/text_job"
+                        android:background="@color/yellow_transparent"/>
 
-        <TextView
-            android:id="@+id/text_title2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="@string/home_title2"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/black01"
-            android:layout_toRightOf="@id/text_name"
-            android:layout_below="@id/constaint_job" />
+                    <TextView
+                        android:id="@+id/text_job"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="바리스타"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black01"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/text_title3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="@string/home_title3"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/black01"
-            android:layout_below="@id/text_name" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/text_todo_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="(2)"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/black01"
-            android:layout_below="@id/text_name"
-            android:layout_toEndOf="@id/text_title3"/>
+                <TextView
+                    android:id="@+id/text_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_title1"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_toEndOf="@id/constaint_job" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="우먼테크"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_below="@id/constaint_job" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_home_todo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="48dp"
-        android:layout_below="@id/relative_home_title"
-        android:layout_alignParentStart="true"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_todo_of_home"/>
+                <TextView
+                    android:id="@+id/text_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/home_title2"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_toRightOf="@id/text_name"
+                    android:layout_below="@id/constaint_job" />
 
-    <!-- 교육 목록 -->
-    <RelativeLayout
-        android:id="@+id/relative_edu_box"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/gray07"
-        android:layout_below="@id/recyclerview_home_todo"
-        android:layout_alignParentBottom="true">
+                <TextView
+                    android:id="@+id/text_title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/home_title3"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_below="@id/text_name" />
 
-        <TextView
-            android:id="@+id/text_name2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginLeft="20dp"
-            android:text="우먼테크"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/black01" />
+                <TextView
+                    android:id="@+id/text_todo_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="(2)"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_below="@id/text_name"
+                    android:layout_toEndOf="@id/text_title3"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="31dp"
-            android:layout_marginRight="20dp"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="6dp"
-            android:text="@string/show_all"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/shape_show_all_btn"/>
+            </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_edu_all"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/text_name2"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_home_todo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="48dp"
+                android:layout_below="@id/relative_home_title"
+                android:layout_alignParentStart="true"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_todo_of_home"/>
 
-    </RelativeLayout>
+            <!-- 교육 목록 -->
+            <RelativeLayout
+                android:id="@+id/relative_edu_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray07"
+                android:layout_below="@id/recyclerview_home_todo"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/text_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="우먼테크"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01" />
+
+                <TextView
+                    android:id="@+id/text_bookmark_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="@string/home_bookmark_title1"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_toRightOf="@id/text_name2" />
+
+                <TextView
+                    android:id="@+id/text_bookmark_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/home_bookmark_title2"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black01"
+                    android:layout_below="@id/text_name2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/show_all"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/shape_show_all_btn"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_edu_bookmark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/text_bookmark_title2"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

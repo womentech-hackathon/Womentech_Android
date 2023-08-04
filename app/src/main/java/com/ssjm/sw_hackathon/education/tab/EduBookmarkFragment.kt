@@ -1,5 +1,6 @@
 package com.ssjm.sw_hackathon.education.tab
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,6 +30,21 @@ class EduBookmarkFragment : Fragment() {
     // 현재 페이지
     private var page = 1
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        page = 1
+
+
+        apiGetEducationInfo(
+            20,
+            21,
+            addEducationList = {
+                addEducationItems(it)
+            }
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,15 +61,6 @@ class EduBookmarkFragment : Fragment() {
         initRecycler()
 
         binding.textBookmarkNoticeCount.text = "총 2건이 있습니다."
-
-        apiGetEducationInfo(
-            1,
-            2,
-            addEducationList = {
-                addEducationItems(it)
-            }
-        )
-
     }
 
     // 교육 아이템 recyclerview 세팅
@@ -68,10 +75,7 @@ class EduBookmarkFragment : Fragment() {
         educationAdapter.items = bookmarkEducationItems!!
     }
 
-    private fun addEdu(edu: EducationItem) {
-        bookmarkEducationItems!!.add(edu)
-        educationAdapter.notifyDataSetChanged()
-    }
+
     private fun addEducationItems(educationItems: MutableList<EducationRow>?) {
         if(educationItems != null) {
             for(education in educationItems) {
@@ -91,7 +95,7 @@ class EduBookmarkFragment : Fragment() {
                                 + education.ENDDATE.replace("-", "/"),   // 교육 기간
                         applicationStart = education.APPLICATIONSTARTDATE,
                         applicationEnd = education.APPLICATIONSTARTDATE,
-                        isBookmark = false  // 찜 유무
+                        isBookmark = true  // 찜 유무
                     )
                 )
             }
