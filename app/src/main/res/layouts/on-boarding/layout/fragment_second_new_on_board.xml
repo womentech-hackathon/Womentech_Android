@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".onBoarding.second.SecondNewOnBoardFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:clickable="true">
 
     <!-- 이전으로 이동 -->
     <ImageButton

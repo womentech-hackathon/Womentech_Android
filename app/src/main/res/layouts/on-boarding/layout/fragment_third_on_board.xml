@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".onBoarding.third.ThirdOnBoardFragment">
+    tools:context=".onBoarding.third.ThirdOnBoardFragment"
+    android:background="@color/white"
+    android:clickable="true">
 
-</FrameLayout>
+
+
+    <!-- 시작하기 -->
+    <LinearLayout
+        android:id="@+id/linear_done_onboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="26dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/main_color_1"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/text_done_onboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/done_on_board"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

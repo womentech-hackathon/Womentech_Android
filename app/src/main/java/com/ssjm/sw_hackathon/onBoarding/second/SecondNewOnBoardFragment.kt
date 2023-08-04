@@ -38,6 +38,12 @@ class SecondNewOnBoardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 이전으로
+        binding.btnBack.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
         // 예시보기
         binding.linearHintBtn.setOnClickListener(View.OnClickListener {
             binding.relativeToolTip.visibility = View.VISIBLE
@@ -51,7 +57,7 @@ class SecondNewOnBoardFragment : Fragment() {
         // 다음으로
         binding.linearNextOnboard.setOnClickListener(View.OnClickListener {
             // 입력하지 않은 경우
-            var job: String = binding.editOnboardSecond.text.toString()
+            var job: String? = binding.editOnboardSecond.text.toString()
             if(job == null || job == "") {
                 Toast.makeText(requireContext(), getString(R.string.toast_unselect_second_job), Toast.LENGTH_SHORT).show()
             }

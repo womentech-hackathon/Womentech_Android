@@ -9,6 +9,8 @@
 
     <!-- 온보딩 -->
     <string name="next_on_board">다음</string>
+    <string name="done_on_board">시작하기</string>
+    <string name="view_edu_on_board">교육정보 보기</string>
     <string name="on_board_first_step">단계 1/3</string>
     <string name="on_board_second_step">단계 2/3</string>
     <string name="on_board_third_step">단계 3/3</string>
@@ -19,11 +21,15 @@
     <string name="on_board_not_select">선택 안 하고 홈으로 이동할래요.</string>
     <string name="toast_unselect_first">원하는 목표를 선택해 주세요.</string>
     <string name="on_board_second_select1_title">새로운 직업을 가지고\n싶으시군요!\n\n어떤 직업을 원하시나요?</string>
+    <string name="on_board_second_select2_title">이전 경력을\n살리고 싶으시군요!\n\n이전에 어떤 일을 하셨나요?</string>
+    <string name="on_board_second_select3_title">아직 모르신다구요,\n괜찮아요!\n\n이루다에서 다음과 같은 것들을\n할 수 있어요.</string>
     <string name="on_board_second_select1_hint_btn">예시 보기</string>
     <string name="on_board_second_select1_tool_tip">5060에게 떠오르는 신직업으로\n드론조종사, 귀농귀촌플래너, 도시농업관리사, 웰다잉전문가, 진로체험코디네이터 등이 있어요.</string>
     <string name="on_board_second_select1_input_hint">예시) 바리스타</string>
-    <string name="on_board_second_select1_input_notice">이(가) 되고 싶어요.</string>
+    <string name="on_board_second_select1_input_notice">이(가) 되고 싶어요.</string>|
+    <string name="on_board_second_select2_input_notice">(였)이었어요.</string>|
     <string name="toast_unselect_second_job">원하는 직업을 선택해 주세요.</string>
+    <string name="toast_unselect_second2_job">이전 직업을 입력해 주세요.</string>
 
     <!-- 메인 -->
     <string name="toast_back_main_page">뒤로가기를 한 번 더 누르시면 앱이 종료됩니다.</string>
