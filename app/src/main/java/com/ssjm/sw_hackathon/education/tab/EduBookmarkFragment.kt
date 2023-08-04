@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.ssjm.sw_hackathon.databinding.FragmentEduBookmarkBinding
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
+import com.ssjm.sw_hackathon.education.recycler.EducationItem
 import com.ssjm.sw_hackathon.education.recycler.EducationItemInterface
 
 // 교육 > 찜
@@ -40,6 +41,8 @@ class EduBookmarkFragment : Fragment() {
 
         // recyclerview 세팅
         initRecycler()
+
+
     }
 
     // 교육 아이템 recyclerview 세팅
@@ -52,6 +55,11 @@ class EduBookmarkFragment : Fragment() {
         binding.recyclerviewEduBookmark.isNestedScrollingEnabled = false // 스크롤을 매끄럽게 해줌
 
         educationAdapter.items = bookmarkEducationItems!!
+    }
+
+    private fun addEdu(edu: EducationItem) {
+        bookmarkEducationItems!!.add(edu)
+        educationAdapter.notifyDataSetChanged()
     }
 
     override fun onDestroy() {

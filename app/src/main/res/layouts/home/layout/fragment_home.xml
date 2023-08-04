@@ -51,7 +51,7 @@
                 android:id="@+id/text_job"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="개발자"
+                android:text="바리스타"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 android:textColor="@color/black01"
@@ -117,6 +117,19 @@
             android:layout_toEndOf="@id/text_title3"/>
 
     </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_home_todo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="48dp"
+        android:layout_below="@id/relative_home_title"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_todo_of_home"/>
 
 
 </RelativeLayout>
