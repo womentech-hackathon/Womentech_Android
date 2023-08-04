@@ -51,6 +51,12 @@
     <!-- 메인 -->
     <string name="toast_back_main_page">뒤로가기를 한 번 더 누르시면 앱이 종료됩니다.</string>
 
+    <!-- 홈 -->
+    <string name="help_btn">이용방법</string>
+    <string name="home_title1">을(를) 꿈꾸는</string>
+    <string name="home_title2">님 의</string>
+    <string name="home_title3">오늘의 실천사항</string>
+
     <!-- 교육 -->
     <string name="info_education">중장년을 위한\n교육 정보입니다.</string>
     <string name="edu_filter_all">모두보기</string>

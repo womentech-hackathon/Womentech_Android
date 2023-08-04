@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".education.tab.EduAllFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:clickable="true">
 
     <!-- 필터 버튼 리스트 -->
     <LinearLayout
