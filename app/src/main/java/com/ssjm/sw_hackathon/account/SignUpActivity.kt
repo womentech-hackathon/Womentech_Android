@@ -88,7 +88,7 @@ class SignUpActivity : AppCompatActivity() {
         // 회원가입
         binding.linearSignUpDone.setOnClickListener(View.OnClickListener {
             if(allInput) {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, DoneSignUpActivity::class.java)
                 startActivity(intent)
                 finish()
             }

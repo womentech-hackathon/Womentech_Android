@@ -22,6 +22,11 @@
     <string name="sign_up_password_re">비밀번호 재확인</string>
     <string name="sign_up_done">완료</string>
 
+    <!-- 회원가입 완료 -->
+    <string name="start_app_title">회원가입이 성공적으로\n완료되었습니다!</string>
+    <string name="start_app_content">이제 이루다가 재취업을 도와드릴 수\n있도록, 원하는 직업과 실천사항을\n작성하러 가보실까요?</string>
+    <string name="start_app_btn">다음</string>
+
     <!-- 온보딩 -->
     <string name="next_on_board">다음</string>
     <string name="done_on_board">시작하기</string>
