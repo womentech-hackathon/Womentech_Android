@@ -39,7 +39,7 @@ class ViewTodoContentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViewPager(2, 0)
+        initViewPager(2, 1)
 
         // 이전으로
         binding.btnBack.setOnClickListener {

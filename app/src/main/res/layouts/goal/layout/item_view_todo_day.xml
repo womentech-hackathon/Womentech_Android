@@ -9,4 +9,5 @@
     android:text="@string/monday"
     android:textColor="@color/white"
     android:textSize="18sp"
+    android:textStyle="bold"
     android:background="@drawable/shape_select_day_selected"/>
