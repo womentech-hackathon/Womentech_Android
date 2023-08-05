@@ -151,7 +151,7 @@
         android:id="@+id/linear_todo_contents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="24dp"
+        android:paddingTop="16dp"
         android:orientation="vertical"
         android:background="@drawable/shape_todo_box_round"
         android:layout_below="@id/linear_gaol_date"
@@ -164,7 +164,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="12dp"
                 android:orientation="vertical"
                 android:gravity="center_horizontal">
 

@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentGoalBinding
 import com.ssjm.sw_hackathon.goal.recycler.DayOfWeekAdapter
 import com.ssjm.sw_hackathon.goal.recycler.DayOfWeekItem
@@ -75,6 +77,11 @@ class GoalFragment : Fragment() {
             startDay = startDay.plusDays(7L)
             setDate(startDay)
         }
+
+        // 실천사항 추가
+        binding.textAddTodoBtn.setOnClickListener(View.OnClickListener {
+            view?.findNavController()?.navigate(R.id.action_menu_goal_to_add)
+        })
 
         addTodoContent(TodoOfDayItem(today, "바리스타 필기 공부", false))
         addTodoContent(TodoOfDayItem(today, "오전 10:00 실기 학원", true))

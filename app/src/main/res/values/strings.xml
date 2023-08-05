@@ -68,6 +68,11 @@
     <string name="goal_title2">오늘의 실천사항입니다:)</string>
     <string name="goal_show_all">실천사항 모두 보기</string>
     <string name="goal_add_todo">실천사항 추가</string>
+    <string name="goal_add_todo_title">실천사항 추가하기</string>
+    <string name="save_add_todo">저장</string>
+    <string name="add_todo_name_title">실천사항 명칭 작성</string>
+    <string name="hint_add_todo_title">실천사항 내용을 작성해주세요.</string>
+    <string name="add_todo_day_title">실천할 요일 선택</string>
 
     <!-- 교육 -->
     <string name="info_education">중장년을 위한\n교육 정보입니다.</string>
