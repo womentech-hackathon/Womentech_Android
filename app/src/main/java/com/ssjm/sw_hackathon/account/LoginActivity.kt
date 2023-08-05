@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.ssjm.sw_hackathon.MainActivity
+import com.ssjm.sw_hackathon.accountApi.apiLogin
+import com.ssjm.sw_hackathon.accountApi.login.LoginRequest
+import com.ssjm.sw_hackathon.accountApi.login.LoginResult
 import com.ssjm.sw_hackathon.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -21,9 +24,17 @@ class LoginActivity : AppCompatActivity() {
 
         // 로그인 -> 메인 페이지로
         binding.textLoginBtn.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            val id = binding.editLoginId.text.toString()
+            val password = binding.editLoginPassword.text.toString()
+
+            if(id.length > 0 && password.length > 0) {
+                apiLogin(
+                    LoginRequest(id, password),
+                    checkComplete = {
+                        checkLogin(it)
+                    }
+                )
+            }
         })
 
         // 회원가입 페이지로
@@ -32,6 +43,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         })
+    }
+
+    // 로그인 성공
+    private fun checkLogin(token: LoginResult) {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onDestroy() {

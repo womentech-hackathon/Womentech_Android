@@ -8,6 +8,11 @@ import android.text.TextWatcher
 import android.view.View
 import com.ssjm.sw_hackathon.MainActivity
 import com.ssjm.sw_hackathon.R
+import com.ssjm.sw_hackathon.accountApi.apiLogin
+import com.ssjm.sw_hackathon.accountApi.apiSignUp
+import com.ssjm.sw_hackathon.accountApi.login.LoginRequest
+import com.ssjm.sw_hackathon.accountApi.login.LoginResult
+import com.ssjm.sw_hackathon.accountApi.signUp.SignUpRequest
 import com.ssjm.sw_hackathon.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
@@ -88,9 +93,12 @@ class SignUpActivity : AppCompatActivity() {
         // 회원가입
         binding.linearSignUpDone.setOnClickListener(View.OnClickListener {
             if(allInput) {
-                val intent = Intent(this, DoneSignUpActivity::class.java)
-                startActivity(intent)
-                finish()
+                apiSignUp(
+                    SignUpRequest(id!!, name!!, password!!),
+                    checkComplete = {
+                        checkComplete(it)
+                    }
+                )
             }
         })
     }
@@ -105,6 +113,25 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    // 회원가입 성공
+    private fun checkComplete(isComplete: Boolean) {
+        if(isComplete) {
+            apiLogin(
+                LoginRequest(id!!, password!!),
+                checkComplete = {
+                    checkLogin(it)
+                }
+            )
+        }
+    }
+
+    // 로그인 성공
+    private fun checkLogin(token: LoginResult) {
+        val intent = Intent(this, DoneSignUpActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onDestroy() {

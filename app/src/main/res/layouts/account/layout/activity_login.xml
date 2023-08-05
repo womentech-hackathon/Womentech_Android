@@ -51,7 +51,7 @@
         android:textStyle="bold"
         android:textSize="18sp"
         android:backgroundTint="@color/gray05"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:maxLines="1"
         android:imeOptions="actionDone"
         android:layout_below="@id/edit_login_id"/>
