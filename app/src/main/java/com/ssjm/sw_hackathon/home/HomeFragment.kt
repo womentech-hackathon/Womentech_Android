@@ -59,7 +59,6 @@ class HomeFragment : Fragment() {
         )
 
         binding.textShowAllEdu.setOnClickListener(View.OnClickListener {
-
             view?.findNavController()?.navigate(R.id.action_menu_home_to_education)
         })
     }

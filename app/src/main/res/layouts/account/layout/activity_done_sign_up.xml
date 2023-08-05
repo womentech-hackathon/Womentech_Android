@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account.DoneSignUpActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/text_done_sign_up_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/start_app_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black01"/>
+
+    <TextView
+        android:id="@+id/text_done_sign_up_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/start_app_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black01"
+        android:layout_below="@id/text_done_sign_up_title"/>
+
+    <LinearLayout
+        android:id="@+id/linear_start_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="26dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/main_color_1"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/text_next_onboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_app_btn"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

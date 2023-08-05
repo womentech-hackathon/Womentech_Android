@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="20dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/shape_todo_content_background"
+    android:elevation="3dp">
+
+    <!-- 체크 -->
+    <RelativeLayout
+        android:id="@+id/relative_todo_complete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/img_todo_complete_btn_round"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_check_round_selected"/>
+
+        <ImageView
+            android:id="@+id/img_todo_complete_btn_check"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_check"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <!-- 내용 -->
+
+    <TextView
+        android:id="@+id/text_todo_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="바리스타 필기 공부"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/relative_todo_complete_btn"/>
+
+    <ImageView
+        android:id="@+id/img_todo_content_more"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_todo_more"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account.SignUpActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/text_sign_up_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/sign_up_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black01"/>
+
+    <!-- 이름 입력창 -->
+    <EditText
+        android:id="@+id/edit_sign_up_name"
+        android:layout_width="match_parent"
+        android:minWidth="166dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/sign_up_name"
+        android:textColorHint="@color/gray05"
+        android:textColor="@color/black03"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:backgroundTint="@color/gray05"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
+        android:layout_below="@id/text_sign_up_title"/>
+
+    <!-- 아이디 입력창 -->
+    <EditText
+        android:id="@+id/edit_sign_up_id"
+        android:layout_width="match_parent"
+        android:minWidth="166dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/sign_up_id"
+        android:textColorHint="@color/gray05"
+        android:textColor="@color/black03"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:backgroundTint="@color/gray05"
+        android:inputType="textUri"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
+        android:layout_below="@id/edit_sign_up_name"/>
+
+    <!-- 비밀번호 입력창 -->
+    <EditText
+        android:id="@+id/edit_sign_up_password"
+        android:layout_width="match_parent"
+        android:minWidth="166dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/sign_up_password"
+        android:textColorHint="@color/gray05"
+        android:textColor="@color/black03"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:backgroundTint="@color/gray05"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
+        android:layout_below="@id/edit_sign_up_id"/>
+
+    <!-- 비밀번호 재확인 입력창 -->
+    <EditText
+        android:id="@+id/edit_sign_up_password_re"
+        android:layout_width="match_parent"
+        android:minWidth="166dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/sign_up_password_re"
+        android:textColorHint="@color/gray05"
+        android:textColor="@color/black03"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:backgroundTint="@color/gray05"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
+        android:layout_below="@id/edit_sign_up_password"/>
+
+    <!-- 완료 단계로 -->
+    <LinearLayout
+        android:id="@+id/linear_sign_up_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="26dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/gray05"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/text_next_onboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_done"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

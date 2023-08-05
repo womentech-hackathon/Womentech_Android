@@ -23,7 +23,37 @@
         android:id="@+id/menu_goal"
         android:name="com.ssjm.sw_hackathon.goal.GoalFragment"
         android:label="fragment_goal"
-        tools:layout="@layout/fragment_goal" />
+        tools:layout="@layout/fragment_goal">
+
+        <action
+            android:id="@+id/action_menu_goal_to_add"
+            app:destination="@id/add_todo" />
+
+        <action
+            android:id="@+id/action_menu_goal_to_view"
+            app:destination="@id/view_todo" />
+
+    </fragment>
+
+    <!-- 실천 사항 추가 -->
+    <fragment
+        android:id="@+id/add_todo"
+        android:name="com.ssjm.sw_hackathon.goal.addTodo.AddTodoContentFragment"
+        android:label="fragment_add_todo_content"
+        tools:layout="@layout/fragment_add_todo_content" >
+
+        <action
+            android:id="@+id/action_todo_add_to_view"
+            app:destination="@id/view_todo" />
+
+    </fragment>
+
+    <!-- 실천 사항 확인 -->
+    <fragment
+        android:id="@+id/view_todo"
+        android:name="com.ssjm.sw_hackathon.goal.viewTodo.ViewTodoContentFragment"
+        android:label="fragment_view_todo_content"
+        tools:layout="@layout/fragment_view_todo_content" />
 
     <!-- 교육 탭 -->
     <fragment

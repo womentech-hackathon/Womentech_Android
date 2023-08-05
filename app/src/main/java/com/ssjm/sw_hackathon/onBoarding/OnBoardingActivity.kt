@@ -13,6 +13,7 @@ import com.ssjm.sw_hackathon.MainActivity
 import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.ActivityOnBoardingBinding
 import com.ssjm.sw_hackathon.onBoarding.first.FirstOnBoardFragment
+import com.ssjm.sw_hackathon.onBoarding.third.ThirdOnBoardFragment
 
 class OnBoardingActivity : AppCompatActivity() {
     // ViewBinding Setting
@@ -33,10 +34,20 @@ class OnBoardingActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun setFragment(frag : Fragment) {
+    fun setFragment(frag: Fragment) {
         supportFragmentManager
             .beginTransaction()
             .add(binding.fragmentOnBoarding.id, frag)
+            .commit()
+    }
+
+    fun moveWithBundleFragment(frag: Fragment, bundle: Bundle) {
+        supportFragmentManager
+            .beginTransaction()
+            .add(binding.fragmentOnBoarding.id,
+                frag.apply {
+                    arguments = bundle
+                })
             .commit()
     }
 
