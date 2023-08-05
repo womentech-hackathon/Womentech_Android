@@ -53,7 +53,10 @@ class SecondKeepOnBoardFragment : Fragment() {
             }
             // 입력한 경우
             else {
-                activity?.setFragment(ThirdOnBoardFragment())
+                //activity?.setFragment(ThirdOnBoardFragment())
+                val bundle = Bundle()
+                bundle.putString("goal", job)
+                activity?.moveWithBundleFragment(ThirdOnBoardFragment(), bundle)
             }
         })
     }

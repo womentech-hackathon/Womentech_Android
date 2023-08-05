@@ -2,6 +2,7 @@ package com.ssjm.sw_hackathon.onBoarding.third
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,10 @@ import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentThirdOnBoardBinding
 import com.ssjm.sw_hackathon.onBoarding.OnBoardingActivity
 import com.ssjm.sw_hackathon.onBoarding.end.EndOnBoardFragment
+import com.ssjm.sw_hackathon.onBoardingApi.addGoal.AddGoalRequest
+import com.ssjm.sw_hackathon.onBoardingApi.addGoal.AddGoalTasks
+import com.ssjm.sw_hackathon.onBoardingApi.apiAddGoal
+import com.ssjm.sw_hackathon.token.GloabalApplication
 
 
 class ThirdOnBoardFragment : Fragment() {
@@ -25,6 +30,9 @@ class ThirdOnBoardFragment : Fragment() {
     private var days = mutableListOf<Boolean>(false, false, false, false, false, false, false)
     private var daysName = mutableListOf<String>("월", "화", "수", "목", "금", "토", "일")
     private var checked = false
+
+    // 목표
+    private var goal: String? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -42,6 +50,9 @@ class ThirdOnBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // 목표
+        goal = arguments?.getString("goal")
 
         // 이전으로
         binding.btnBack.setOnClickListener {
@@ -217,14 +228,34 @@ class ThirdOnBoardFragment : Fragment() {
                 Toast.makeText(requireContext(), getString(R.string.toast_unselect_day), Toast.LENGTH_SHORT).show()
             }
             else {
-                activity?.setFragment(EndOnBoardFragment())
+                var selectDays: MutableList<String> = mutableListOf()
+                for(i: Int in 0..6) {
+                    if(days[i]) {
+                        selectDays.add(daysName[i])
+                    }
+                }
+
+                apiAddGoal(
+                    AddGoalRequest(
+                        tasks = mutableListOf(
+                            AddGoalTasks(
+                                name = todo,
+                                days = selectDays
+                            )
+                        ),
+                        name = goal!!
+                    ),
+                    getGoalId = {
+                        saveGoalAndTask(it)
+                    }
+                )
             }
         })
     }
 
     private fun checkSelected() {
         checked = false
-        for(i: Int in 0..7) {
+        for(i: Int in 0..6) {
             if(days[i]) {
                 checked = true
                 break
@@ -237,6 +268,14 @@ class ThirdOnBoardFragment : Fragment() {
         else {
             binding.linearDoneSelectDay.setBackgroundResource(R.drawable.shape_selected)
         }
+    }
+
+    private fun saveGoalAndTask(goalId: Int) {
+        Log.d("Test", "----------------------------------------------------------")
+
+        GloabalApplication.prefs.setInt("goalId", goalId)
+
+        activity?.setFragment(EndOnBoardFragment())
     }
 
     override fun onDestroy() {

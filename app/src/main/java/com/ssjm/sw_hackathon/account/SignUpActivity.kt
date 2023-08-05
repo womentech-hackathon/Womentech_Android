@@ -14,6 +14,7 @@ import com.ssjm.sw_hackathon.accountApi.login.LoginRequest
 import com.ssjm.sw_hackathon.accountApi.login.LoginResult
 import com.ssjm.sw_hackathon.accountApi.signUp.SignUpRequest
 import com.ssjm.sw_hackathon.databinding.ActivitySignUpBinding
+import com.ssjm.sw_hackathon.token.GloabalApplication
 
 class SignUpActivity : AppCompatActivity() {
     // ViewBinding Setting
@@ -129,6 +130,13 @@ class SignUpActivity : AppCompatActivity() {
 
     // 로그인 성공
     private fun checkLogin(token: LoginResult) {
+        // 토큰값 저장
+        var accessToken = token.accessToken.toString()
+        var refreshToken = token.accessToken.toString()
+
+        GloabalApplication.prefs.setString("accessToken", accessToken)
+        GloabalApplication.prefs.setString("refreshToken", refreshToken)
+
         val intent = Intent(this, DoneSignUpActivity::class.java)
         startActivity(intent)
         finish()
