@@ -112,6 +112,7 @@
                     android:scaleType="fitXY"/>
 
                 <TextView
+                    android:id="@+id/text_week_of_month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
@@ -131,20 +132,27 @@
 
             </LinearLayout>
 
-            <!-- 일자 표시 -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_goal_date"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/linear_gaol_date"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginHorizontal="5dp"
                 android:layout_below="@id/linear_move_week"
-                android:layout_alignParentStart="true"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_day_of_todo"
-                android:gravity="center"/>
+                android:layout_centerHorizontal="true">
+
+                <!-- 일자 표시 -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_goal_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_day_of_todo" />
+
+            </LinearLayout>
 
             <!-- 실천사항 내용 -->
 
