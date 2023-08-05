@@ -73,6 +73,8 @@
     <string name="add_todo_name_title">실천사항 명칭 작성</string>
     <string name="hint_add_todo_title">실천사항 내용을 작성해주세요.</string>
     <string name="add_todo_day_title">실천할 요일 선택</string>
+    <string name="start_todo">실천 시작</string>
+    <string name="finish_todo">실천 종료</string>
 
     <!-- 교육 -->
     <string name="info_education">중장년을 위한\n교육 정보입니다.</string>

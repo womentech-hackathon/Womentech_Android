@@ -80,7 +80,12 @@ class GoalFragment : Fragment() {
 
         // 실천사항 추가
         binding.textAddTodoBtn.setOnClickListener(View.OnClickListener {
-            view?.findNavController()?.navigate(R.id.action_menu_goal_to_add)
+            view.findNavController().navigate(R.id.action_menu_goal_to_add)
+        })
+
+        // 실천사항 확인
+        binding.linearShowAllTodo.setOnClickListener(View.OnClickListener {
+            view.findNavController().navigate(R.id.action_menu_goal_to_view)
         })
 
         addTodoContent(TodoOfDayItem(today, "바리스타 필기 공부", false))

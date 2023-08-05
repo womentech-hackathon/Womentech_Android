@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentAddTodoContentBinding
@@ -39,8 +40,7 @@ class AddTodoContentFragment : Fragment() {
 
         // 이전으로
         binding.btnBack.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
-            requireActivity().supportFragmentManager.popBackStack()
+            view.findNavController().popBackStack()
         }
 
         addTodo(AddTodoItem())
@@ -48,6 +48,12 @@ class AddTodoContentFragment : Fragment() {
         // 추가 버튼
         binding.linearAddTodoBtn.setOnClickListener(View.OnClickListener {
             addTodo(AddTodoItem())
+        })
+
+        // 저장
+        binding.linearSaveAddTodo.setOnClickListener(View.OnClickListener {
+            view.findNavController().popBackStack()
+            view.findNavController().navigate(R.id.action_menu_goal_to_view)
         })
     }
     private fun initRecycler() {
