@@ -6,6 +6,8 @@ interface EducationItemInterface {
     val applicationEnd: String   // 신청 마감일
 }
 data class EducationItem(
+    val bookmarkId: Int? = null,
+    val eduNumber: Int,
     override val status: String, // 모집중 or 마감
     val title: String,  // 교육 제목
     val applicationPeriod: String, // 신청 기간

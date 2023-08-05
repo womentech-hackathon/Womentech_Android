@@ -1,4 +1,4 @@
-package com.ssjm.sw_hackathon.educationApi
+package com.ssjm.sw_hackathon.educationApi.openApi
 
 import retrofit2.Call
 import retrofit2.http.GET

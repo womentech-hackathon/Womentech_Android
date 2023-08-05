@@ -5,147 +5,157 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".home.HomeFragment"
-    android:background="@color/white"
+    android:background="@color/gray08"
     android:clickable="true">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <!-- 사용방법 버튼 -->
-            <TextView
-                android:id="@+id/text_help_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:paddingVertical="6dp"
-                android:paddingHorizontal="12dp"
-                android:text="@string/help_btn"
-                android:textSize="14sp"
-                android:textColor="@color/black03"
-                android:background="@drawable/shape_help_btn"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"/>
-
-            <!-- 제목 -->
             <RelativeLayout
-                android:id="@+id/relative_home_title"
-                android:layout_width="wrap_content"
+                android:id="@+id/relative_task"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@+id/text_help_btn">
+                android:background="@color/white">
 
-                <!-- 직업 -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constaint_job"
+                <!-- 사용방법 버튼 -->
+                <TextView
+                    android:id="@+id/text_help_btn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingVertical="6dp"
+                    android:paddingHorizontal="12dp"
+                    android:text="@string/help_btn"
+                    android:textSize="14sp"
+                    android:textColor="@color/black03"
+                    android:background="@drawable/shape_help_btn"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"/>
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="11dp"
-                        app:layout_constraintStart_toStartOf="@id/text_job"
-                        app:layout_constraintBottom_toBottomOf="@id/text_job"
-                        app:layout_constraintEnd_toEndOf="@id/text_job"
-                        android:background="@color/yellow_transparent"/>
+                <!-- 제목 -->
+                <RelativeLayout
+                    android:id="@+id/relative_home_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/text_help_btn">
+
+                    <!-- 직업 -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constaint_job"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="11dp"
+                            app:layout_constraintStart_toStartOf="@id/text_job"
+                            app:layout_constraintBottom_toBottomOf="@id/text_job"
+                            app:layout_constraintEnd_toEndOf="@id/text_job"
+                            android:background="@color/yellow_transparent"/>
+
+                        <TextView
+                            android:id="@+id/text_job"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="바리스타"
+                            android:textSize="26sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black01"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/text_job"
+                        android:id="@+id/text_title1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="바리스타"
+                        android:text="@string/home_title1"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         android:textColor="@color/black01"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        android:layout_toEndOf="@id/constaint_job" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/text_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="권혁선"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black01"
+                        android:layout_below="@id/constaint_job" />
 
-                <TextView
-                    android:id="@+id/text_title1"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/text_title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/home_title2"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black01"
+                        android:layout_toRightOf="@id/text_name"
+                        android:layout_below="@id/constaint_job" />
+
+                    <TextView
+                        android:id="@+id/text_title3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/home_title3"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black01"
+                        android:layout_below="@id/text_name" />
+
+                    <TextView
+                        android:id="@+id/text_todo_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="(2)"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black01"
+                        android:layout_below="@id/text_name"
+                        android:layout_toEndOf="@id/text_title3"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_home_todo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/home_title1"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black01"
-                    android:layout_toEndOf="@id/constaint_job" />
-
-                <TextView
-                    android:id="@+id/text_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="권혁선"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black01"
-                    android:layout_below="@id/constaint_job" />
-
-                <TextView
-                    android:id="@+id/text_title2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/home_title2"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black01"
-                    android:layout_toRightOf="@id/text_name"
-                    android:layout_below="@id/constaint_job" />
-
-                <TextView
-                    android:id="@+id/text_title3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/home_title3"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black01"
-                    android:layout_below="@id/text_name" />
-
-                <TextView
-                    android:id="@+id/text_todo_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="(2)"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black01"
-                    android:layout_below="@id/text_name"
-                    android:layout_toEndOf="@id/text_title3"/>
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="48dp"
+                    android:layout_below="@id/relative_home_title"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_todo_of_home"/>
 
             </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_home_todo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="48dp"
-                android:layout_below="@id/relative_home_title"
-                android:layout_alignParentStart="true"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_todo_of_home"/>
 
             <!-- 교육 목록 -->
             <RelativeLayout
                 android:id="@+id/relative_edu_box"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/gray08"
-                android:layout_below="@id/recyclerview_home_todo"
+                android:layout_below="@id/relative_task"
                 android:layout_alignParentBottom="true">
 
                 <TextView
@@ -205,7 +215,46 @@
                     android:layout_below="@+id/text_bookmark_title2"
                     android:nestedScrollingEnabled="false"
                     android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/linear_none_bookmark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_bookmark_title2"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/text_none_bookmark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/none_bookmark"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/gray03"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_none_bookmark_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="12dp"
+                        android:paddingHorizontal="18dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="40dp"
+                        android:text="@string/none_bookmark_btn"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/shape_add_todo"
+                        android:elevation="3dp"/>
+
+                </LinearLayout>
 
             </RelativeLayout>
 
