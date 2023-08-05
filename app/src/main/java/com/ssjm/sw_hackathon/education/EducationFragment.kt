@@ -1,5 +1,6 @@
 package com.ssjm.sw_hackathon.education
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,6 +28,17 @@ class EducationFragment : Fragment() {
     // viewPager
     lateinit var viewPagers: ViewPager
     lateinit var tabLayouts: TabLayout
+
+    override fun onResume() {
+        super.onResume()
+
+        // 서울시 어르신 취업지원센터 교육정보 개수 조회
+        apiGetEducationCount(
+            addEducationCount = {
+                addEducationCount(it)
+            }
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

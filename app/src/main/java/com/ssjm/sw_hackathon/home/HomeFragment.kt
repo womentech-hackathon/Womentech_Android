@@ -1,10 +1,12 @@
 package com.ssjm.sw_hackathon.home
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssjm.sw_hackathon.R
@@ -14,8 +16,12 @@ import com.ssjm.sw_hackathon.education.recycler.EducationItem
 import com.ssjm.sw_hackathon.education.recycler.EducationItemInterface
 import com.ssjm.sw_hackathon.educationApi.EducationRow
 import com.ssjm.sw_hackathon.educationApi.apiGetEducationInfo
+import com.ssjm.sw_hackathon.goalApi.apiGetDailyTasks
+import com.ssjm.sw_hackathon.goalApi.getDailyTasks.GetDailyTask
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoAdapter
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoItem
+import com.ssjm.sw_hackathon.token.GloabalApplication
+import java.time.LocalDate
 
 // 메인 탭
 class HomeFragment : Fragment() {
@@ -33,6 +39,9 @@ class HomeFragment : Fragment() {
     // RecyclerView Adapter
     private lateinit var educationAdapter: EducationAdapter
 
+    // 커버 이미지
+    private var coverImages: MutableList<String> = mutableListOf("note1", "barista2", "note2", "barista1")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,13 +51,29 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 목표, 이름 설정
+        var name: String = GloabalApplication.prefs.getString("name", "")
+        var goal: String = GloabalApplication.prefs.getString("goal", "")
+
+        binding.textName.text = name
+        binding.textName2.text = name
+        binding.textJob.text = goal
+
         initRecycler()
 
-        addTodo(HomeTodoItem("note1", "노트에 필사하기", "66일째 실천중", mutableListOf("월", "수")))
-        addTodo(HomeTodoItem("barista2", "실기 학원", "32일째 실천중", mutableListOf("화", "목")))
+        //addTodo(HomeTodoItem("note1", "노트에 필사하기", "66일째 실천중", mutableListOf("월", "수")))
+        //addTodo(HomeTodoItem("barista2", "실기 학원", "32일째 실천중", mutableListOf("화", "목")))
+
+        apiGetDailyTasks(
+            LocalDate.now().minusDays(1),
+            setDailyTask = {
+                setDailyTasks(it)
+            }
+        )
 
         apiGetEducationInfo(
             20,
@@ -89,6 +114,22 @@ class HomeFragment : Fragment() {
     private fun addTodo(todo: HomeTodoItem) {
         homeTodoItems!!.add(todo)
         homeTodoAdapter.notifyDataSetChanged()
+    }
+
+    // 오늘의 할 일 받아와서 세팅
+    private fun setDailyTasks(tasks: MutableList<GetDailyTask>) {
+        binding.textTodoCount.text = "(" + tasks.size.toString() + ")"
+
+        for(i: Int in 0..(tasks.size - 1)) {
+            addTodo(
+                HomeTodoItem(
+                    coverImages[i],
+                    tasks[i].name,
+                    "1일째 실천중",
+                    tasks[i].days
+                )
+            )
+        }
     }
 
     private fun addEducationItems(educationItems: MutableList<EducationRow>?) {

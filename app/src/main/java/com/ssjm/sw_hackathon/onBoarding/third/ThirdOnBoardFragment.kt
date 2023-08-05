@@ -273,6 +273,7 @@ class ThirdOnBoardFragment : Fragment() {
     private fun saveGoalAndTask(goalId: Int) {
         Log.d("Test", "----------------------------------------------------------")
 
+        GloabalApplication.prefs.setString("goal", goal!!)
         GloabalApplication.prefs.setInt("goalId", goalId)
 
         activity?.setFragment(EndOnBoardFragment())
