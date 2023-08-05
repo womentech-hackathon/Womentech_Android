@@ -7,6 +7,26 @@
     <string name="education_title">교육</string>
     <string name="my_page_title">나</string>
 
+    <!-- 로그인 -->
+    <string name="login_id">아이디</string>
+    <string name="login_password">비밀번호</string>
+    <string name="login_done">로그인하기</string>
+    <string name="not_sign_up">아직 회원이 아니신가요?</string>
+    <string name="login_to_sign_up">회원가입하기</string>
+
+    <!-- 회원가입 -->
+    <string name="sign_up_title">만나서 반가워요:)\n이루다에서 사용하실 아이디와\n비밀번호를 입력해주세요.</string>
+    <string name="sign_up_name">이름</string>
+    <string name="sign_up_id">아이디</string>
+    <string name="sign_up_password">비밀번호</string>
+    <string name="sign_up_password_re">비밀번호 재확인</string>
+    <string name="sign_up_done">완료</string>
+
+    <!-- 회원가입 완료 -->
+    <string name="start_app_title">회원가입이 성공적으로\n완료되었습니다!</string>
+    <string name="start_app_content">이제 이루다가 재취업을 도와드릴 수\n있도록, 원하는 직업과 실천사항을\n작성하러 가보실까요?</string>
+    <string name="start_app_btn">다음</string>
+
     <!-- 온보딩 -->
     <string name="next_on_board">다음</string>
     <string name="done_on_board">시작하기</string>
@@ -47,6 +67,9 @@
     <string name="toast_unselect_day">실천할 요일을 선택해 주세요.</string>
     <string name="toast_unselect_todo">실천할 일을 입력해 주세요.</string>
     <string name="on_board_end_title">실천사항을 모두\n입력했어요!\n\n열심히 계획을 세웠으니\n이제 실천을 시작해볼까요?</string>
+    <string name="on_board_yet_info1">5060을 위한 직업 교육 탐색</string>
+    <string name="on_board_yet_info2">재취업 계획 수립 및 실천</string>
+    <string name="on_board_yet_more">다양한 교육 정보를 보고 싶다면\n하단의 [교육정보 보기]를 선택해주세요</string>
 
     <!-- 메인 -->
     <string name="toast_back_main_page">뒤로가기를 한 번 더 누르시면 앱이 종료됩니다.</string>
@@ -59,6 +82,19 @@
     <string name="show_all">모두 보기</string>
     <string name="home_bookmark_title1">님이</string>
     <string name="home_bookmark_title2">찜한 교육 정보</string>
+
+    <!-- 실천 -->
+    <string name="goal_title1">을(를) 향한</string>
+    <string name="goal_title2">오늘의 실천사항입니다:)</string>
+    <string name="goal_show_all">실천사항 모두 보기</string>
+    <string name="goal_add_todo">실천사항 추가</string>
+    <string name="goal_add_todo_title">실천사항 추가하기</string>
+    <string name="save_add_todo">저장</string>
+    <string name="add_todo_name_title">실천사항 명칭 작성</string>
+    <string name="hint_add_todo_title">실천사항 내용을 작성해주세요.</string>
+    <string name="add_todo_day_title">실천할 요일 선택</string>
+    <string name="start_todo">실천 시작</string>
+    <string name="finish_todo">실천 종료</string>
 
     <!-- 교육 -->
     <string name="info_education">중장년을 위한\n교육 정보입니다.</string>

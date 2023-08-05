@@ -7,6 +7,97 @@
     tools:context=".account.LoginActivity"
     android:background="@color/white">
 
+    <!-- 이전으로 이동 -->
+    <ImageView
+        android:id="@+id/img_app_icon"
+        android:layout_width="80dp"
+        android:layout_height="37.85dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginLeft="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_iruda_logo_n_name"/>
 
+    <!-- 아이디 입력창 -->
+    <EditText
+        android:id="@+id/edit_login_id"
+        android:layout_width="match_parent"
+        android:minWidth="166dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/login_id"
+        android:textColorHint="@color/gray05"
+        android:textColor="@color/black03"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:backgroundTint="@color/gray05"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
+        android:layout_below="@id/img_app_icon"/>
+
+    <!-- 비밀번호 입력창 -->
+    <EditText
+        android:id="@+id/edit_login_password"
+        android:layout_width="match_parent"
+        android:minWidth="166dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/login_password"
+        android:textColorHint="@color/gray05"
+        android:textColor="@color/black03"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:backgroundTint="@color/gray05"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
+        android:layout_below="@id/edit_login_id"/>
+    
+    <TextView
+        android:id="@+id/text_login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/login_done"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@id/edit_login_password"
+        android:background="@drawable/shape_login_btn"
+        android:gravity="center"/>
+
+    <!-- 아직 회원이 아니신가요? -->
+    <TextView
+        android:id="@+id/text_not_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/not_sign_up"
+        android:textColor="@color/gray03"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@id/text_login_btn"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/text_sign_up_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="18dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/login_to_sign_up"
+        android:textColor="@color/black03"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_below="@id/text_not_sign_up"
+        android:background="@drawable/shape_sign_up_btn"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

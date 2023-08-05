@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="우먼테크"
+                    android:text="권혁선"
                     android:textSize="26sp"
                     android:textStyle="bold"
                     android:textColor="@color/black01"
@@ -144,7 +144,7 @@
                 android:id="@+id/relative_edu_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/gray07"
+                android:background="@color/gray08"
                 android:layout_below="@id/recyclerview_home_todo"
                 android:layout_alignParentBottom="true">
 
@@ -183,6 +183,7 @@
                     android:layout_below="@id/text_name2" />
 
                 <TextView
+                    android:id="@+id/text_show_all_edu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="31dp"

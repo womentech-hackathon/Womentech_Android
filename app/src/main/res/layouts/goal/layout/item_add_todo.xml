@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="22dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/shape_add_todo_background"
+    android:elevation="3dp">
+
+    <LinearLayout
+        android:id="@+id/linear_todo_add_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/text_todo_num"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/black01"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_add_todo_number_round"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:text="@string/add_todo_name_title"
+            android:textColor="@color/black01"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edit_add_todo_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="@string/hint_add_todo_title"
+        android:textColorHint="@color/gray05"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:backgroundTint="@color/gray05"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
+        android:layout_below="@+id/linear_todo_add_title"/>
+
+    <LinearLayout
+        android:id="@+id/linear_todo_add_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@id/edit_add_todo_title">
+
+        <TextView
+            android:id="@+id/text_todo_day"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/black01"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_add_todo_number_round"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:text="@string/add_todo_day_title"
+            android:textColor="@color/black01"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+    <!-- 요일 선택지 -->
+    <LinearLayout
+        android:id="@+id/linear_todo_add_day_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_below="@id/linear_todo_add_day">
+
+        <TextView
+            android:id="@+id/text_monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4.5dp"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/monday"
+            android:textColor="@color/main_color_1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_select_day_unselected"/>
+
+        <TextView
+            android:id="@+id/text_tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4.5dp"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/tuesday"
+            android:textColor="@color/main_color_1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_select_day_unselected"/>
+
+        <TextView
+            android:id="@+id/text_wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4.5dp"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/wednesday"
+            android:textColor="@color/main_color_1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_select_day_unselected"/>
+
+        <TextView
+            android:id="@+id/text_thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4.5dp"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/thursday"
+            android:textColor="@color/main_color_1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_select_day_unselected"/>
+
+        <TextView
+            android:id="@+id/text_friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4.5dp"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/friday"
+            android:textColor="@color/main_color_1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_select_day_unselected"/>
+
+        <TextView
+            android:id="@+id/text_saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4.5dp"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/saturday"
+            android:textColor="@color/main_color_1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_select_day_unselected"/>
+
+        <TextView
+            android:id="@+id/text_sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4.5dp"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="12dp"
+            android:text="@string/sunday"
+            android:textColor="@color/main_color_1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_select_day_unselected"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
