@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="우먼테크"
+                    android:text="권혁선"
                     android:textSize="26sp"
                     android:textStyle="bold"
                     android:textColor="@color/black01"

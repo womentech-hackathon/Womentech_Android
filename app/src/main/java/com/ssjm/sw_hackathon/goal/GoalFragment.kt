@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssjm.sw_hackathon.databinding.FragmentGoalBinding
 import com.ssjm.sw_hackathon.goal.recycler.DayOfWeekAdapter
 import com.ssjm.sw_hackathon.goal.recycler.DayOfWeekItem
+import com.ssjm.sw_hackathon.goal.recycler.TodoOfDayAdapter
+import com.ssjm.sw_hackathon.goal.recycler.TodoOfDayItem
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle
@@ -24,9 +26,13 @@ class GoalFragment : Fragment() {
     private var _binding: FragmentGoalBinding? = null
     private val binding get() = _binding!!
 
-    // 실천 리스트 recyclerview adapter
+    // 실천 날짜 리스트 recyclerview adapter
     private var dayOfWeekItems: MutableList<DayOfWeekItem>? = null
     private lateinit var dayOfWeekAdapter: DayOfWeekAdapter
+
+    // 실천 내용 리스트 recyclerview adapter
+    private var todoOfDayItems: MutableList<TodoOfDayItem>? = null
+    private lateinit var todoOfDayAdapter: TodoOfDayAdapter
 
     private lateinit var today: LocalDate
     private lateinit var startDay: LocalDate
@@ -69,11 +75,14 @@ class GoalFragment : Fragment() {
             startDay = startDay.plusDays(7L)
             setDate(startDay)
         }
+
+        addTodoContent(TodoOfDayItem(today, "바리스타 필기 공부", false))
+        addTodoContent(TodoOfDayItem(today, "오전 10:00 실기 학원", true))
     }
     private fun initRecycler() {
         dayOfWeekItems = mutableListOf<DayOfWeekItem>()
 
-        // 링크 리스트 recyclerview 세팅
+        // 날짜 리스트 recyclerview 세팅
         dayOfWeekAdapter = DayOfWeekAdapter(
             requireContext()
         )
@@ -82,6 +91,18 @@ class GoalFragment : Fragment() {
         binding.recyclerviewGoalDate.adapter = dayOfWeekAdapter
         binding.recyclerviewGoalDate.isNestedScrollingEnabled = false
         dayOfWeekAdapter.items = dayOfWeekItems!!
+
+        todoOfDayItems = mutableListOf<TodoOfDayItem>()
+
+        // 실천 내용 recyclerview 세팅
+        todoOfDayAdapter = TodoOfDayAdapter(
+            requireContext()
+        )
+        binding.recyclerviewTodoContent.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerviewTodoContent.adapter = todoOfDayAdapter
+        binding.recyclerviewTodoContent.isNestedScrollingEnabled = false
+        todoOfDayAdapter.items = todoOfDayItems!!
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -133,12 +154,17 @@ class GoalFragment : Fragment() {
     // 주차 계산
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getWeekOfMonth(startDay: LocalDate): Int {
-        return ((startDay.dayOfMonth) / 7).toInt() + 1
+        return ((startDay.dayOfMonth - 1) / 7).toInt() + 1
     }
 
     private fun addDay(day: DayOfWeekItem) {
         dayOfWeekItems!!.add(day)
         dayOfWeekAdapter.notifyDataSetChanged()
+    }
+
+    private fun addTodoContent(todo: TodoOfDayItem) {
+        todoOfDayItems!!.add(todo)
+        todoOfDayAdapter.notifyDataSetChanged()
     }
 
     override fun onDestroy() {
