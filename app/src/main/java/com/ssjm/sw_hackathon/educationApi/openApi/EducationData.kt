@@ -1,4 +1,4 @@
-package com.ssjm.sw_hackathon.educationApi
+package com.ssjm.sw_hackathon.educationApi.openApi
 
 import com.google.gson.annotations.SerializedName
 

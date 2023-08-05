@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.ItemEducationBinding
 import com.ssjm.sw_hackathon.databinding.ItemLoadingBinding
+import com.ssjm.sw_hackathon.educationApi.bookmark.apiAddBookmark
+import com.ssjm.sw_hackathon.educationApi.bookmark.apiDeleteBookmark
 import okhttp3.internal.notify
 
 // 전체 교육 Recycler Adapter
@@ -150,6 +152,9 @@ class EducationAdapter (
 
                     // 아이콘 모양
                     binding.iconBookmarkBtn.setImageResource(R.drawable.ic_bookmark_selected)
+
+                    // 북마크 추가
+                    apiAddBookmark(item.eduNumber)
                 }
 
                 // 선택 -> 미선택
@@ -162,6 +167,9 @@ class EducationAdapter (
 
                     // 아이콘 모양
                     binding.iconBookmarkBtn.setImageResource(R.drawable.ic_bookmark_unselected)
+
+                    // 북마크 삭제
+                    if(item.bookmarkId != null) apiDeleteBookmark(item.bookmarkId)
                 }
 
                 item.isBookmark = !item.isBookmark

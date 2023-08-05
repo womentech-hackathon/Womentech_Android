@@ -2,7 +2,6 @@ package com.ssjm.sw_hackathon.education.tab
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +15,9 @@ import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
 import com.ssjm.sw_hackathon.education.recycler.EducationItemInterface
 import com.ssjm.sw_hackathon.education.recycler.LoadingItem
-import com.ssjm.sw_hackathon.educationApi.EducationRow
-import com.ssjm.sw_hackathon.educationApi.apiGetEducationCount
-import com.ssjm.sw_hackathon.educationApi.apiGetEducationInfo
+import com.ssjm.sw_hackathon.educationApi.openApi.EducationRow
+import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationCount
+import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationInfo
 
 // 교육 > 전체
 class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
@@ -180,6 +179,7 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
             for(education in educationItems) {
                 allEducationItems!!.add(
                     EducationItem(
+                        eduNumber = education.IDX.toInt(),
                         status = education.APPLY_STATE, // 모집중 or 마감
                         title = education.SUBJECT,      // 교육 제목
                         applicationPeriod

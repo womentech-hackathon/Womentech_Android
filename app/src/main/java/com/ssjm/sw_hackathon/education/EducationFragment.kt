@@ -1,22 +1,19 @@
 package com.ssjm.sw_hackathon.education
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.FragmentEducationBinding
 import com.ssjm.sw_hackathon.education.tab.EduAllFragment
 import com.ssjm.sw_hackathon.education.tab.EduBookmarkFragment
 import com.ssjm.sw_hackathon.education.tab.EduViewPagerAdapter
-import com.ssjm.sw_hackathon.educationApi.EducationRow
-import com.ssjm.sw_hackathon.educationApi.apiGetEducationCount
-import com.ssjm.sw_hackathon.educationApi.apiGetEducationInfo
+import com.ssjm.sw_hackathon.educationApi.bookmark.apiGetBookmark
+import com.ssjm.sw_hackathon.educationApi.bookmark.getBookmark.GetBookmarks
+import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationCount
 
 
 // 교육 탭
@@ -62,9 +59,20 @@ class EducationFragment : Fragment() {
         )
     }
 
+    var eduCount: Int? = null
     fun addEducationCount(count: Int) {
-        initViewPager(count, 2)
+        eduCount = count
+        // 북마크 조회
+        apiGetBookmark(
+            getBookmark = {
+                getBookmarkCnt(it)
+            }
+        )
     }
+    private fun getBookmarkCnt(bookmarks: MutableList<GetBookmarks>) {
+        initViewPager(eduCount!!, bookmarks.size)
+    }
+
 
     // viewPager 세팅
     private fun initViewPager(allCount: Int, bookmarkCount: Int) {

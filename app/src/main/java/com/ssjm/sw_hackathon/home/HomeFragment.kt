@@ -14,8 +14,11 @@ import com.ssjm.sw_hackathon.databinding.FragmentHomeBinding
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
 import com.ssjm.sw_hackathon.education.recycler.EducationItemInterface
-import com.ssjm.sw_hackathon.educationApi.EducationRow
-import com.ssjm.sw_hackathon.educationApi.apiGetEducationInfo
+import com.ssjm.sw_hackathon.educationApi.bookmark.apiGetBookmark
+import com.ssjm.sw_hackathon.educationApi.bookmark.getBookmark.GetBookmarks
+import com.ssjm.sw_hackathon.educationApi.openApi.EducationRow
+import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationCount
+import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationInfo
 import com.ssjm.sw_hackathon.goalApi.apiGetDailyTasks
 import com.ssjm.sw_hackathon.goalApi.getDailyTasks.GetDailyTask
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoAdapter
@@ -41,6 +44,8 @@ class HomeFragment : Fragment() {
 
     // 커버 이미지
     private var coverImages: MutableList<String> = mutableListOf("note1", "barista2", "note2", "barista1")
+
+    private var bookmarkList: MutableList<GetBookmarks>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,16 +80,20 @@ class HomeFragment : Fragment() {
             }
         )
 
-        apiGetEducationInfo(
-            20,
-            21,
-            addEducationList = {
-                addEducationItems(it)
+        apiGetBookmark(
+            getBookmark = {
+                getBookmark(it)
             }
         )
 
+        // 모두 보기
         binding.textShowAllEdu.setOnClickListener(View.OnClickListener {
-            view?.findNavController()?.navigate(R.id.action_menu_home_to_education)
+            view.findNavController().navigate(R.id.action_menu_home_to_education)
+        })
+
+        // 찜하러 가기
+        binding.textNoneBookmarkBtn.setOnClickListener(View.OnClickListener {
+            view.findNavController().navigate(R.id.action_menu_home_to_education)
         })
     }
 
@@ -132,33 +141,82 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun getBookmark(bookmarks: MutableList<GetBookmarks>) {
+        // 찜한 목록이 없는 경우
+        if (bookmarks.size == 0) {
+            binding.textShowAllEdu.visibility = View.GONE
+            binding.recyclerviewEduBookmark.visibility = View.GONE
+
+            binding.linearNoneBookmark.visibility = View.VISIBLE
+        }
+        else {
+            binding.textShowAllEdu.visibility = View.VISIBLE
+            binding.recyclerviewEduBookmark.visibility = View.VISIBLE
+
+            binding.linearNoneBookmark.visibility = View.GONE
+
+            bookmarkList = bookmarks
+
+            apiGetEducationCount(
+                addEducationCount = {
+                    getCountEdu(it)
+                }
+            )
+        }
+    }
+
+    private fun getCountEdu(count: Int) {
+        apiGetEducationInfo(
+            1,
+            count,
+            addEducationList = {
+                addEducationItems(it)
+            }
+        )
+    }
+
     private fun addEducationItems(educationItems: MutableList<EducationRow>?) {
-        if(educationItems != null) {
+        if(educationItems != null && bookmarkList != null) {
             for(education in educationItems) {
-                bookmarkEducationItems!!.add(
-                    EducationItem(
-                        status = education.APPLY_STATE, // 모집중 or 마감
-                        title = education.SUBJECT,      // 교육 제목
-                        applicationPeriod
-                        = "신청기간: "
-                                + education.APPLICATIONSTARTDATE.replace("-", "/")
-                                + " ~ "
-                                + education.APPLICATIONENDDATE.replace("-", "/"), // 신청 기간
-                        educationPeriod
-                        = "교육기간: "
-                                + education.STARTDATE.replace("-", "/")
-                                + " ~ "
-                                + education.ENDDATE.replace("-", "/"),   // 교육 기간
-                        applicationStart = education.APPLICATIONSTARTDATE,
-                        applicationEnd = education.APPLICATIONSTARTDATE,
-                        isBookmark = true  // 찜 유무
+                val bookmarkId = checkBookmark(education)
+                if(bookmarkId != -1) {
+                    bookmarkEducationItems!!.add(
+                        EducationItem(
+                            bookmarkId = bookmarkId,
+                            eduNumber = education.IDX.toInt(),
+                            status = education.APPLY_STATE, // 모집중 or 마감
+                            title = education.SUBJECT,      // 교육 제목
+                            applicationPeriod
+                            = "신청기간: "
+                                    + education.APPLICATIONSTARTDATE.replace("-", "/")
+                                    + " ~ "
+                                    + education.APPLICATIONENDDATE.replace("-", "/"), // 신청 기간
+                            educationPeriod
+                            = "교육기간: "
+                                    + education.STARTDATE.replace("-", "/")
+                                    + " ~ "
+                                    + education.ENDDATE.replace("-", "/"),   // 교육 기간
+                            applicationStart = education.APPLICATIONSTARTDATE,
+                            applicationEnd = education.APPLICATIONSTARTDATE,
+                            isBookmark = true  // 찜 유무
+                        )
                     )
-                )
+                }
             }
 
             // adapter 새로고침
             educationAdapter.notifyDataSetChanged()
         }
+    }
+
+    // 북마크된 정보인지 확인
+    private fun checkBookmark(edu: EducationRow): Int {
+        for(i: Int in 0..(bookmarkList!!.size - 1)) {
+            if(bookmarkList!![i].number == edu.IDX.toInt()) {
+                return bookmarkList!![i].id
+            }
+        }
+        return -1
     }
 
     override fun onDestroy() {
