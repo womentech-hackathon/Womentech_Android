@@ -16,25 +16,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SWHackathon"
         tools:targetApi="31">
+
         <activity
-            android:name=".onBoarding.OnBoardingActivity"
+            android:name=".account.LoginActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <activity
-            android:name=".account.LoginActivity"
+            android:name=".account.SignUpActivity"
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".onBoarding.OnBoardingActivity"
+            android:exported="true"/>
 
-        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
