@@ -1,4 +1,4 @@
-package com.ssjm.sw_hackathon.educationApi
+package com.ssjm.sw_hackathon.educationApi.openApi
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

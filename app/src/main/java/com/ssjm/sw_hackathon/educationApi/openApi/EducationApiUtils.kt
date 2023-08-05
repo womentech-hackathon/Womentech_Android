@@ -1,4 +1,4 @@
-package com.ssjm.sw_hackathon.educationApi
+package com.ssjm.sw_hackathon.educationApi.openApi
 
 import android.content.ContentValues
 import android.util.Log

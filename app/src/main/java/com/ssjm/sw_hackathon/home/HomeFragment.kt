@@ -1,10 +1,12 @@
 package com.ssjm.sw_hackathon.home
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssjm.sw_hackathon.R
@@ -12,10 +14,17 @@ import com.ssjm.sw_hackathon.databinding.FragmentHomeBinding
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
 import com.ssjm.sw_hackathon.education.recycler.EducationItemInterface
-import com.ssjm.sw_hackathon.educationApi.EducationRow
-import com.ssjm.sw_hackathon.educationApi.apiGetEducationInfo
+import com.ssjm.sw_hackathon.educationApi.bookmark.apiGetBookmark
+import com.ssjm.sw_hackathon.educationApi.bookmark.getBookmark.GetBookmarks
+import com.ssjm.sw_hackathon.educationApi.openApi.EducationRow
+import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationCount
+import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationInfo
+import com.ssjm.sw_hackathon.goalApi.apiGetDailyTasks
+import com.ssjm.sw_hackathon.goalApi.getDailyTasks.GetDailyTask
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoAdapter
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoItem
+import com.ssjm.sw_hackathon.token.GloabalApplication
+import java.time.LocalDate
 
 // 메인 탭
 class HomeFragment : Fragment() {
@@ -33,6 +42,11 @@ class HomeFragment : Fragment() {
     // RecyclerView Adapter
     private lateinit var educationAdapter: EducationAdapter
 
+    // 커버 이미지
+    private var coverImages: MutableList<String> = mutableListOf("note1", "barista2", "note2", "barista1")
+
+    private var bookmarkList: MutableList<GetBookmarks>? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,24 +56,44 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 목표, 이름 설정
+        var name: String = GloabalApplication.prefs.getString("name", "")
+        var goal: String = GloabalApplication.prefs.getString("goal", "")
+
+        binding.textName.text = name
+        binding.textName2.text = name
+        binding.textJob.text = goal
+
         initRecycler()
 
-        addTodo(HomeTodoItem("note1", "노트에 필사하기", "66일째 실천중", mutableListOf("월", "수")))
-        addTodo(HomeTodoItem("barista2", "실기 학원", "32일째 실천중", mutableListOf("화", "목")))
+        //addTodo(HomeTodoItem("note1", "노트에 필사하기", "66일째 실천중", mutableListOf("월", "수")))
+        //addTodo(HomeTodoItem("barista2", "실기 학원", "32일째 실천중", mutableListOf("화", "목")))
 
-        apiGetEducationInfo(
-            20,
-            21,
-            addEducationList = {
-                addEducationItems(it)
+        apiGetDailyTasks(
+            LocalDate.now().minusDays(1),
+            setDailyTask = {
+                setDailyTasks(it)
             }
         )
 
+        apiGetBookmark(
+            getBookmark = {
+                getBookmark(it)
+            }
+        )
+
+        // 모두 보기
         binding.textShowAllEdu.setOnClickListener(View.OnClickListener {
-            view?.findNavController()?.navigate(R.id.action_menu_home_to_education)
+            view.findNavController().navigate(R.id.action_menu_home_to_education)
+        })
+
+        // 찜하러 가기
+        binding.textNoneBookmarkBtn.setOnClickListener(View.OnClickListener {
+            view.findNavController().navigate(R.id.action_menu_home_to_education)
         })
     }
 
@@ -91,33 +125,98 @@ class HomeFragment : Fragment() {
         homeTodoAdapter.notifyDataSetChanged()
     }
 
-    private fun addEducationItems(educationItems: MutableList<EducationRow>?) {
-        if(educationItems != null) {
-            for(education in educationItems) {
-                bookmarkEducationItems!!.add(
-                    EducationItem(
-                        status = education.APPLY_STATE, // 모집중 or 마감
-                        title = education.SUBJECT,      // 교육 제목
-                        applicationPeriod
-                        = "신청기간: "
-                                + education.APPLICATIONSTARTDATE.replace("-", "/")
-                                + " ~ "
-                                + education.APPLICATIONENDDATE.replace("-", "/"), // 신청 기간
-                        educationPeriod
-                        = "교육기간: "
-                                + education.STARTDATE.replace("-", "/")
-                                + " ~ "
-                                + education.ENDDATE.replace("-", "/"),   // 교육 기간
-                        applicationStart = education.APPLICATIONSTARTDATE,
-                        applicationEnd = education.APPLICATIONSTARTDATE,
-                        isBookmark = true  // 찜 유무
-                    )
+    // 오늘의 할 일 받아와서 세팅
+    private fun setDailyTasks(tasks: MutableList<GetDailyTask>) {
+        binding.textTodoCount.text = "(" + tasks.size.toString() + ")"
+
+        for(i: Int in 0..(tasks.size - 1)) {
+            addTodo(
+                HomeTodoItem(
+                    coverImages[i],
+                    tasks[i].name,
+                    "1일째 실천중",
+                    tasks[i].days
                 )
+            )
+        }
+    }
+
+    private fun getBookmark(bookmarks: MutableList<GetBookmarks>) {
+        // 찜한 목록이 없는 경우
+        if (bookmarks.size == 0) {
+            binding.textShowAllEdu.visibility = View.GONE
+            binding.recyclerviewEduBookmark.visibility = View.GONE
+
+            binding.linearNoneBookmark.visibility = View.VISIBLE
+        }
+        else {
+            binding.textShowAllEdu.visibility = View.VISIBLE
+            binding.recyclerviewEduBookmark.visibility = View.VISIBLE
+
+            binding.linearNoneBookmark.visibility = View.GONE
+
+            bookmarkList = bookmarks
+
+            apiGetEducationCount(
+                addEducationCount = {
+                    getCountEdu(it)
+                }
+            )
+        }
+    }
+
+    private fun getCountEdu(count: Int) {
+        apiGetEducationInfo(
+            1,
+            count,
+            addEducationList = {
+                addEducationItems(it)
+            }
+        )
+    }
+
+    private fun addEducationItems(educationItems: MutableList<EducationRow>?) {
+        if(educationItems != null && bookmarkList != null) {
+            for(education in educationItems) {
+                val bookmarkId = checkBookmark(education)
+                if(bookmarkId != -1) {
+                    bookmarkEducationItems!!.add(
+                        EducationItem(
+                            bookmarkId = bookmarkId,
+                            eduNumber = education.IDX.toInt(),
+                            status = education.APPLY_STATE, // 모집중 or 마감
+                            title = education.SUBJECT,      // 교육 제목
+                            applicationPeriod
+                            = "신청기간: "
+                                    + education.APPLICATIONSTARTDATE.replace("-", "/")
+                                    + " ~ "
+                                    + education.APPLICATIONENDDATE.replace("-", "/"), // 신청 기간
+                            educationPeriod
+                            = "교육기간: "
+                                    + education.STARTDATE.replace("-", "/")
+                                    + " ~ "
+                                    + education.ENDDATE.replace("-", "/"),   // 교육 기간
+                            applicationStart = education.APPLICATIONSTARTDATE,
+                            applicationEnd = education.APPLICATIONSTARTDATE,
+                            isBookmark = true  // 찜 유무
+                        )
+                    )
+                }
             }
 
             // adapter 새로고침
             educationAdapter.notifyDataSetChanged()
         }
+    }
+
+    // 북마크된 정보인지 확인
+    private fun checkBookmark(edu: EducationRow): Int {
+        for(i: Int in 0..(bookmarkList!!.size - 1)) {
+            if(bookmarkList!![i].number == edu.IDX.toInt()) {
+                return bookmarkList!![i].id
+            }
+        }
+        return -1
     }
 
     override fun onDestroy() {

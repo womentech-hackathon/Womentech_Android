@@ -82,6 +82,8 @@
     <string name="show_all">모두 보기</string>
     <string name="home_bookmark_title1">님이</string>
     <string name="home_bookmark_title2">찜한 교육 정보</string>
+    <string name="none_bookmark">아직 찜한 교육이 없어요.\n내 역량을 펼쳐줄 교육을 찾으러 갈까요?</string>
+    <string name="none_bookmark_btn">교육 찜하러 가기</string>
 
     <!-- 실천 -->
     <string name="goal_title1">을(를) 향한</string>
