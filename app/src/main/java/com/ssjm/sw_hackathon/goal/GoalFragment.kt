@@ -21,6 +21,7 @@ import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
 
+public var checkAdd = false
 
 // 목표 탭
 class GoalFragment : Fragment() {
@@ -38,12 +39,12 @@ class GoalFragment : Fragment() {
 
     private lateinit var today: LocalDate
     private lateinit var startDay: LocalDate
-    var progressValues = mutableListOf<String>("done", "fail", "some", "fail", "done", "some", "done")
+    var progressValues = mutableListOf<String>("none", "none", "none", "none", "none", "none", "none")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentGoalBinding.inflate(layoutInflater)
 
         return binding.root
@@ -88,8 +89,8 @@ class GoalFragment : Fragment() {
             view.findNavController().navigate(R.id.action_menu_goal_to_view)
         })
 
-        addTodoContent(TodoOfDayItem(today, "바리스타 필기 공부", false))
-        addTodoContent(TodoOfDayItem(today, "오전 10:00 실기 학원", true))
+        addTodoContent(TodoOfDayItem(today, "라떼 아트", false))
+        if(checkAdd)  addTodoContent(TodoOfDayItem(today, "오전 10:00 실기 학원", false))
     }
     private fun initRecycler() {
         dayOfWeekItems = mutableListOf<DayOfWeekItem>()
@@ -108,7 +109,10 @@ class GoalFragment : Fragment() {
 
         // 실천 내용 recyclerview 세팅
         todoOfDayAdapter = TodoOfDayAdapter(
-            requireContext()
+            requireContext(),
+            onClickLatte = {
+                checkLatte()
+            }
         )
         binding.recyclerviewTodoContent.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -161,6 +165,11 @@ class GoalFragment : Fragment() {
                 )
             }
         }
+    }
+
+    private fun checkLatte() {
+        dayOfWeekItems!![6].progress = "some"
+        dayOfWeekAdapter.notifyDataSetChanged()
     }
 
     // 주차 계산

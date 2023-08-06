@@ -50,13 +50,6 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         filter = "all"
         orderType = "new"
         page = 1
-
-        // 서울시 어르신 취업지원센터 교육정보 조회
-        apiGetEducationCount(
-            addEducationCount = {
-                getEducation(it)
-            }
-        )
     }
 
     override fun onCreateView(
@@ -71,80 +64,89 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // recyclerview 세팅
-        initRecycler()
+        if(_binding != null && binding != null) {
 
-        // 서울시 어르신 취업지원센터 교육정보 조회
-        /*apiGetEducationCount(
-            addEducationCount = {
-                getEducation(it)
-            }
-        )*/
+            filter = "all"
+            orderType = "new"
+            page = 1
 
-        // 모두보기 필터 선택
-        binding.linearEduFilterAll.setOnClickListener(View.OnClickListener {
-            filterAll()
-        })
+            // recyclerview 세팅
+            initRecycler()
 
-        // 접수중 필터 선택
-        binding.linearEduFilterIng.setOnClickListener(View.OnClickListener {
-            filterIng()
-        })
+            // 서울시 어르신 취업지원센터 교육정보 조회
+            apiGetEducationCount(
+                addEducationCount = {
+                    getEducation(it)
+                }
+            )
 
-        // 마감 필터 선택
-        binding.linearEduFilterEnd.setOnClickListener(View.OnClickListener {
-            filterEnd()
-        })
+            // 모두보기 필터 선택
+            binding.linearEduFilterAll.setOnClickListener(View.OnClickListener {
+                filterAll()
+            })
 
-        // 정렬 버튼
-        binding.linearSortingBtn.setOnClickListener(View.OnClickListener {
-            val bundle = Bundle()
-            bundle.putString("orderType", orderType)
-            val bottomSheet = EduOrderBottomFragment().apply { setListener(this@EduAllFragment) }
-            bottomSheet.arguments = bundle
-            bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
-        })
+            // 접수중 필터 선택
+            binding.linearEduFilterIng.setOnClickListener(View.OnClickListener {
+                filterIng()
+            })
 
-        // recyclerview 스크롤 감지 => 무한 스크롤
-        binding.recyclerviewEduAll.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
+            // 마감 필터 선택
+            binding.linearEduFilterEnd.setOnClickListener(View.OnClickListener {
+                filterEnd()
+            })
 
-                // 스크롤이 끝에 도달했는지 확인
-                if (!binding.recyclerviewEduAll.canScrollVertically(1)) {
-                    // 모두 보기 filter 중이라면 모두보기 list의 데이터를 추가
-                    if(filter == "all" && allEducationItems!!.size >= 10) {
-                        educationAdapter.items.removeAt(10 * page)
-                        page++
-                        educationAdapter.items = allEducationItems!!.subList(0, 10 * page)
-                        if(allEducationItems!!.size > 10 * page) {
-                            educationAdapter.items.add(LoadingItem())
+            // 정렬 버튼
+            binding.linearSortingBtn.setOnClickListener(View.OnClickListener {
+                val bundle = Bundle()
+                bundle.putString("orderType", orderType)
+                val bottomSheet =
+                    EduOrderBottomFragment().apply { setListener(this@EduAllFragment) }
+                bottomSheet.arguments = bundle
+                bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
+            })
+
+            // recyclerview 스크롤 감지 => 무한 스크롤
+            binding.recyclerviewEduAll.addOnScrollListener(object :
+                RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    // 스크롤이 끝에 도달했는지 확인
+                    if (!binding.recyclerviewEduAll.canScrollVertically(1)) {
+                        // 모두 보기 filter 중이라면 모두보기 list의 데이터를 추가
+                        if (filter == "all" && allEducationItems!!.size >= 10) {
+                            educationAdapter.items.removeAt(10 * page)
+                            page++
+                            educationAdapter.items = allEducationItems!!.subList(0, 10 * page)
+                            if (allEducationItems!!.size > 10 * page) {
+                                educationAdapter.items.add(LoadingItem())
+                            }
+                            educationAdapter.notifyDataSetChanged()
                         }
-                        educationAdapter.notifyDataSetChanged()
-                    }
-                    // 접수중 filter 중이라면 접수중 list의 데이터를 추가
-                    else if(filter == "ing" && ingEducationItems!!.size >= 10) {
-                        educationAdapter.items.removeAt(10 * page)
-                        page++
-                        educationAdapter.items = ingEducationItems!!.subList(0, 10 * page)
-                        if(ingEducationItems!!.size > 10 * page) {
-                            educationAdapter.items.add(LoadingItem())
+                        // 접수중 filter 중이라면 접수중 list의 데이터를 추가
+                        else if (filter == "ing" && ingEducationItems!!.size >= 10) {
+                            educationAdapter.items.removeAt(10 * page)
+                            page++
+                            educationAdapter.items = ingEducationItems!!.subList(0, 10 * page)
+                            if (ingEducationItems!!.size > 10 * page) {
+                                educationAdapter.items.add(LoadingItem())
+                            }
+                            educationAdapter.notifyDataSetChanged()
                         }
-                        educationAdapter.notifyDataSetChanged()
-                    }
-                    // 마감 filter 중이라면 마감 list의 데이터를 추가
-                    else if(filter == "end" && endEducationItems!!.size >= 10) {
-                        educationAdapter.items.removeAt(10 * page)
-                        page++
-                        educationAdapter.items = endEducationItems!!.subList(0, 10 * page)
-                        if(endEducationItems!!.size > 10 * page) {
-                            educationAdapter.items.add(LoadingItem())
+                        // 마감 filter 중이라면 마감 list의 데이터를 추가
+                        else if (filter == "end" && endEducationItems!!.size >= 10) {
+                            educationAdapter.items.removeAt(10 * page)
+                            page++
+                            educationAdapter.items = endEducationItems!!.subList(0, 10 * page)
+                            if (endEducationItems!!.size > 10 * page) {
+                                educationAdapter.items.add(LoadingItem())
+                            }
+                            educationAdapter.notifyDataSetChanged()
                         }
-                        educationAdapter.notifyDataSetChanged()
                     }
                 }
-            }
-        })
+            })
+        }
     }
 
     // 교육 아이템 recyclerview 세팅
@@ -166,7 +168,7 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         // 처음 보여줄 교육 데이터 10개 가져와서 나열
         apiGetEducationInfo(
             1,
-            count,
+            count-1,
             addEducationList = {
                 addEducationItems(it)
             }
