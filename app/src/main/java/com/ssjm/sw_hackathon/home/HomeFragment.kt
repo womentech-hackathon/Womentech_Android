@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
         //addTodo(HomeTodoItem("barista2", "실기 학원", "32일째 실천중", mutableListOf("화", "목")))
 
         apiGetDailyTasks(
-            LocalDate.now().minusDays(1),
+            LocalDate.now(),
             setDailyTask = {
                 setDailyTasks(it)
             }
@@ -141,9 +141,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun getBookmark(bookmarks: MutableList<GetBookmarks>) {
+    private fun getBookmark(bookmarks: MutableList<GetBookmarks>?) {
         // 찜한 목록이 없는 경우
-        if (bookmarks.size == 0) {
+        if (bookmarks == null || bookmarks.size == 0) {
             binding.textShowAllEdu.visibility = View.GONE
             binding.recyclerviewEduBookmark.visibility = View.GONE
 

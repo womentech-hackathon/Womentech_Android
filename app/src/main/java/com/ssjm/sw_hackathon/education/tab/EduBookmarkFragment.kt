@@ -40,12 +40,6 @@ class EduBookmarkFragment : Fragment() {
 
         page = 1
         bookmarkList = null
-
-        apiGetBookmark(
-            getBookmark = {
-                getBookmark(it)
-            }
-        )
     }
 
     override fun onCreateView(
@@ -63,6 +57,12 @@ class EduBookmarkFragment : Fragment() {
         // recyclerview 세팅
         initRecycler()
 
+        apiGetBookmark(
+            getBookmark = {
+                getBookmark(it)
+            }
+        )
+
         binding.textBookmarkNoticeCount.text = "총 0건이 있습니다."
     }
 
@@ -78,16 +78,21 @@ class EduBookmarkFragment : Fragment() {
         educationAdapter.items = bookmarkEducationItems!!
     }
 
-    private fun getBookmark(bookmarks: MutableList<GetBookmarks>) {
-        bookmarkList = bookmarks
+    private fun getBookmark(bookmarks: MutableList<GetBookmarks>?) {
+        if(bookmarks == null) {
+            binding.textBookmarkNoticeCount.text = "총 0건이 있습니다."
+        }
+        else {
+            bookmarkList = bookmarks
 
-        binding.textBookmarkNoticeCount.text = "총 "+ bookmarks.size + "건이 있습니다."
+            binding.textBookmarkNoticeCount.text = "총 " + bookmarks!!.size + "건이 있습니다."
 
-        apiGetEducationCount(
-            addEducationCount = {
-                getCountEdu(it)
-            }
-        )
+            apiGetEducationCount(
+                addEducationCount = {
+                    getCountEdu(it)
+                }
+            )
+        }
     }
 
     private fun getCountEdu(count: Int) {

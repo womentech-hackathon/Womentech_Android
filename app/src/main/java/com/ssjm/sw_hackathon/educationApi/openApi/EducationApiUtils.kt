@@ -27,9 +27,9 @@ fun apiGetEducationInfo(
                 Log.d(ContentValues.TAG, "서울시 어르신 취업지원센터 교육정보 조회 결과 -------------------------------------------")
                 Log.d(ContentValues.TAG, "onResponse: ${response.body().toString()}")
 
-                val body: EducationData? = response.body()!!
-                if(body != null) {
-                    val educationList: MutableList<EducationRow> = body.tbViewProgram.row
+                //val body: EducationData? = response.body()!!
+                if(response.body() != null) {
+                    val educationList: MutableList<EducationRow> = response.body()!!.tbViewProgram.row
                     addEducationList(educationList)
                 }
             }
@@ -52,9 +52,9 @@ fun apiGetEducationCount(
                 Log.d(ContentValues.TAG, "서울시 어르신 취업지원센터 교육정보 조회 결과 -------------------------------------------")
                 Log.d(ContentValues.TAG, "onResponse: ${response.body().toString()}")
 
-                val body: EducationData? = response.body()!!
-                if(body != null) {
-                    val count: Int = body.tbViewProgram.list_total_count
+                //val body: EducationData? = response.body()!!
+                if(response.body() != null) {
+                    val count: Int = response.body()!!.tbViewProgram.list_total_count
                     addEducationCount(count)
                 }
             }
