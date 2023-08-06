@@ -29,12 +29,14 @@ class EducationFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        // 서울시 어르신 취업지원센터 교육정보 개수 조회
-        apiGetEducationCount(
-            addEducationCount = {
-                addEducationCount(it)
-            }
-        )
+        if(_binding != null) {
+            // 서울시 어르신 취업지원센터 교육정보 개수 조회
+            apiGetEducationCount(
+                addEducationCount = {
+                    addEducationCount(it)
+                }
+            )
+        }
     }
 
     override fun onCreateView(
@@ -59,7 +61,7 @@ class EducationFragment : Fragment() {
         )
     }
 
-    var eduCount: Int? = null
+    var eduCount: Int = 0
     fun addEducationCount(count: Int) {
         eduCount = count
         // 북마크 조회
@@ -69,8 +71,9 @@ class EducationFragment : Fragment() {
             }
         )
     }
-    private fun getBookmarkCnt(bookmarks: MutableList<GetBookmarks>) {
-        initViewPager(eduCount!!, bookmarks.size)
+    private fun getBookmarkCnt(bookmarks: MutableList<GetBookmarks>?) {
+        if(bookmarks == null) initViewPager(eduCount, 0)
+        else initViewPager(eduCount, bookmarks.size)
     }
 
 

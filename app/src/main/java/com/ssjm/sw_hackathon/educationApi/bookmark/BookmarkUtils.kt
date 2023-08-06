@@ -20,7 +20,7 @@ private val retrofit: Retrofit = ApiClient.getInstance()
 
 // 북마크 조회
 fun apiGetBookmark(
-    getBookmark: (bookmarks: MutableList<GetBookmarks>) -> Unit
+    getBookmark: (bookmarks: MutableList<GetBookmarks>?) -> Unit
 ) {
     retrofit.create(GetBookmarkService::class.java)
         .getBookmark()

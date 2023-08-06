@@ -38,8 +38,8 @@ class ViewTodoIngFragment : Fragment() {
 
         initRecycler()
 
-        addTodoIng(ViewTodoIngItem("바리스타 필기 공부", mutableListOf("월", "수", "금"), "2023년 7월 3일"))
-        addTodoIng(ViewTodoIngItem("오전 10:00 실기학원", mutableListOf("화", "목"), "2023년 6월 29일"))
+        addTodoIng(ViewTodoIngItem("라떼 아트", mutableListOf("월", "토", "일"), "2023년 8월 6일"))
+        addTodoIng(ViewTodoIngItem("오전 10:00 실기학원", mutableListOf("토", "일"), "2023년 8월 6일"))
     }
 
     private fun initRecycler() {

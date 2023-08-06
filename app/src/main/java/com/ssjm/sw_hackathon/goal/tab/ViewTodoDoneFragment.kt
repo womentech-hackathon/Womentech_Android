@@ -36,7 +36,7 @@ class ViewTodoDoneFragment : Fragment() {
 
         initRecycler()
 
-        addTodoDone(ViewTodoDoneItem("인강 듣기", mutableListOf("월", "수", "금"), "2023년 7월 3일", "2023년 7월 18일"))
+        //addTodoDone(ViewTodoDoneItem("인강 듣기", mutableListOf("월", "수", "금"), "2023년 7월 3일", "2023년 7월 18일"))
     }
 
     private fun initRecycler() {
