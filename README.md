@@ -1,10 +1,10 @@
-![Cover](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/6ba08cc8-5b82-4568-aba6-07b48291e671)
+![Cover](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/f5d35106-6c93-4db6-b4be-c6f74fa9824f)
 
 ## 이루다
 ```
 💡 중장년 재취업 목표 달성 도우미 앱
 📆 2023.07.10.수 ~ 2023.08.09.수
-🔥 2023 서울 우먼테크 해커톤
+🏆 2023 서울 우먼테크 해커톤 우수상(3위)
 ```
 
 <div align="center">
@@ -21,9 +21,9 @@
 
 ---
 
-### ❓ 우리나라 중장년은 지금 무엇을 하고 있을까요?
+### ❓ 우리나라 중장년은 지금 무엇을 하고 있을까요? 
 1️⃣ 중장년은 지금 고민이 많아요.  
-
+ 
 `"중장년 구직자 10명 중 7명은 비자발적 퇴직, 3명은 장기실업 상태"`  
 `"실직 중장년에게 가장 필요한 정책 1위, 일자리"`  
 
@@ -73,10 +73,10 @@
 ---
 
 ### 🎇 인생 2막 시작
-![UI_Onboarding_01](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/6a6cd871-98e0-44f5-b202-b1234b6fca67)
-![UI_Onboarding_02-1](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/f5e47a03-30f0-4ca1-829f-a0387d4bdf26)
-![UI_Onboarding_03](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/92a7fc24-db43-4698-bcd2-f6f020e4f13f)
-![UI_Home](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/68b34592-4dc2-423c-809e-fca6df5d010b)
-![UI_Todo_01](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/44a98580-31d3-4b2e-ba97-2a5be34fe743)
-![UI_Education](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/d0c7760a-f845-41fb-9384-3ae54da70022)
-![UI_My Page](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/e5cc9ce3-74c4-4a96-a74b-a6c80498bcf9)
+![UI_Onboarding_01](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/48716f1c-08c7-45b0-9708-3f03f4526cc6)
+![UI_Onboarding_02-1](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/c05f71f6-ccdf-4fa1-8383-68de793b2ecf)
+![UI_Onboarding_03](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/c422a274-2a29-4c48-949f-2b486b294c9d)
+![UI_Home](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/221437c2-dfe4-4107-8afa-87f151a9ab31)
+![UI_Todo_02](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/5f54c491-dd7b-4b7c-9cac-0d82f2851dcf)
+![UI_Education](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/4bde3fd4-b7fc-4e4b-9769-8ff94bee1c4e)
+![UI_My Page](https://github.com/womentech-hackathon/Womentech_AOS/assets/76805879/a518ce9e-87e5-4a89-bb96-a28fa4dec201)
