@@ -16,12 +16,15 @@ import com.ssjm.sw_hackathon.goal.recycler.DayOfWeekAdapter
 import com.ssjm.sw_hackathon.goal.recycler.DayOfWeekItem
 import com.ssjm.sw_hackathon.goal.recycler.TodoOfDayAdapter
 import com.ssjm.sw_hackathon.goal.recycler.TodoOfDayItem
+import com.ssjm.sw_hackathon.goalApi.apiGetDailyTasks
+import com.ssjm.sw_hackathon.goalApi.apiGetProgressGoal
+import com.ssjm.sw_hackathon.goalApi.getDailyTasks.GetDailyTask
+import com.ssjm.sw_hackathon.goalApi.getProgressGoal.GetProgressGoalResult
+import com.ssjm.sw_hackathon.home.recycler.HomeTodoItem
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
-
-public var checkAdd = false
 
 // 목표 탭
 class GoalFragment : Fragment() {
@@ -39,7 +42,11 @@ class GoalFragment : Fragment() {
 
     private lateinit var today: LocalDate
     private lateinit var startDay: LocalDate
+    private lateinit var selectDate: LocalDate
     var progressValues = mutableListOf<String>("none", "none", "none", "none", "none", "none", "none")
+
+    // 목표 id
+    private var goalId: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +65,7 @@ class GoalFragment : Fragment() {
 
         // 오늘 날짜
         today = LocalDate.now()
+        selectDate = today
 
         // 요일
         val dayOfWeek: DayOfWeek = today.getDayOfWeek()
@@ -89,15 +97,62 @@ class GoalFragment : Fragment() {
             view.findNavController().navigate(R.id.action_menu_goal_to_view)
         })
 
-        addTodoContent(TodoOfDayItem(today, "라떼 아트", false))
-        if(checkAdd)  addTodoContent(TodoOfDayItem(today, "오전 10:00 실기 학원", false))
+        // 목표 조회 -> 오늘의 할 일 조회
+        apiGetProgressGoal(
+            setGoalInfo = {
+                setGoal(it)
+            }
+        )
+    }
+
+    // 오늘의 할 일
+    private fun setGoal(goalInfo: GetProgressGoalResult) {
+        binding.textJob.text = goalInfo.name
+        goalId = goalInfo.id
+
+        getDailyTasks(today)
+    }
+
+    // 선택된 날짜 할 일 조회
+    private fun getDailyTasks(date: LocalDate) {
+        selectDate = date
+
+        apiGetDailyTasks(
+            goalId!!,
+            selectDate,
+            setDailyTask = {
+                setDailyTasks(it)
+            }
+        )
+    }
+
+    // 오늘의 할 일 받아와서 세팅
+    private fun setDailyTasks(tasks: MutableList<GetDailyTask>) {
+        todoOfDayItems = mutableListOf<TodoOfDayItem>()
+        todoOfDayAdapter.items = todoOfDayItems!!
+        todoOfDayAdapter.notifyDataSetChanged()
+
+        for(i: Int in 0..(tasks.size - 1)) {
+            var checked: Boolean = true
+            if(tasks[i].status == "PROGRESS") checked = false
+            addTodoContent(
+                TodoOfDayItem(
+                    selectDate,
+                    tasks[i].name,
+                    checked
+                )
+            )
+        }
     }
     private fun initRecycler() {
         dayOfWeekItems = mutableListOf<DayOfWeekItem>()
 
         // 날짜 리스트 recyclerview 세팅
         dayOfWeekAdapter = DayOfWeekAdapter(
-            requireContext()
+            requireContext(),
+            selectDate = {
+                getDailyTasks(it)
+            }
         )
         binding.recyclerviewGoalDate.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -109,10 +164,7 @@ class GoalFragment : Fragment() {
 
         // 실천 내용 recyclerview 세팅
         todoOfDayAdapter = TodoOfDayAdapter(
-            requireContext(),
-            onClickLatte = {
-                checkLatte()
-            }
+            requireContext()
         )
         binding.recyclerviewTodoContent.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -165,11 +217,6 @@ class GoalFragment : Fragment() {
                 )
             }
         }
-    }
-
-    private fun checkLatte() {
-        dayOfWeekItems!![6].progress = "some"
-        dayOfWeekAdapter.notifyDataSetChanged()
     }
 
     // 주차 계산

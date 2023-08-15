@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.ItemDayOfTodoBinding
+import java.time.LocalDate
 
 class DayOfWeekAdapter (private val context: Context,
+    private val selectDate: (date: LocalDate) -> Unit,
 ) : RecyclerView.Adapter<DayOfWeekAdapter.DayOfWeekViewHolder>() {
 
     var items = mutableListOf<DayOfWeekItem>()
@@ -34,6 +36,9 @@ class DayOfWeekAdapter (private val context: Context,
                     items[i].selected = false
             }
             notifyDataSetChanged()
+
+            // 날짜 선택
+            selectDate(items[position].date)
         }
     }
 

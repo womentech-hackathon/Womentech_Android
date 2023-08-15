@@ -26,8 +26,9 @@ import com.ssjm.sw_hackathon.goalApi.getDailyTasks.GetDailyTask
 import com.ssjm.sw_hackathon.goalApi.getProgressGoal.GetProgressGoalResult
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoAdapter
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoItem
-import com.ssjm.sw_hackathon.token.GloabalApplication
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 // 메인 탭
 class HomeFragment : Fragment() {
@@ -50,6 +51,8 @@ class HomeFragment : Fragment() {
 
     private var bookmarkList: MutableList<GetBookmarks>? = null
 
+    private lateinit var today: LocalDate
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,6 +66,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        today = LocalDate.now()
+
         initRecycler()
 
         // 사용자 이름 조회
@@ -75,7 +80,7 @@ class HomeFragment : Fragment() {
         // 목표 조회 -> 오늘의 할 일 조회
         apiGetProgressGoal(
             setGoalInfo = {
-                setDailyTasks(it)
+                setGoal(it)
             }
         )
 
@@ -104,12 +109,12 @@ class HomeFragment : Fragment() {
     }
 
     // 오늘의 할 일 세팅
-    private fun setDailyTasks(goalInfo: GetProgressGoalResult) {
+    private fun setGoal(goalInfo: GetProgressGoalResult) {
         binding.textJob.text = goalInfo.name
 
         apiGetDailyTasks(
             goalInfo.id,
-            LocalDate.now(),
+            today,
             setDailyTask = {
                 setDailyTasks(it)
             }
@@ -149,11 +154,13 @@ class HomeFragment : Fragment() {
         binding.textTodoCount.text = "(" + tasks.size.toString() + ")"
 
         for(i: Int in 0..(tasks.size - 1)) {
+            val startDate = LocalDate.parse(tasks[i].startDate, DateTimeFormatter.ISO_DATE)
+            val doingDay = ChronoUnit.DAYS.between(today, startDate)
             addTodo(
                 HomeTodoItem(
                     coverImages[i],
                     tasks[i].name,
-                    "1일째 실천중",
+                    doingDay.toString() + "일째 실천중",
                     tasks[i].days
                 )
             )
