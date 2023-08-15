@@ -1,4 +1,4 @@
-package com.ssjm.sw_hackathon.onBoardingApi.getProgressGoal
+package com.ssjm.sw_hackathon.goalApi.getProgressGoal
 
 import com.ssjm.sw_hackathon.token.GloabalApplication
 import retrofit2.Call

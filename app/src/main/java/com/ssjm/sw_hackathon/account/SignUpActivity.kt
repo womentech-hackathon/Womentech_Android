@@ -136,7 +136,6 @@ class SignUpActivity : AppCompatActivity() {
 
         GloabalApplication.prefs.setString("accessToken", accessToken)
         GloabalApplication.prefs.setString("refreshToken", refreshToken)
-        GloabalApplication.prefs.setString("name", name!!)
 
         val intent = Intent(this, DoneSignUpActivity::class.java)
         startActivity(intent)

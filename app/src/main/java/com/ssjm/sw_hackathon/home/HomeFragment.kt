@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssjm.sw_hackathon.R
+import com.ssjm.sw_hackathon.accountApi.apiGetUserName
 import com.ssjm.sw_hackathon.databinding.FragmentHomeBinding
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
@@ -20,7 +21,9 @@ import com.ssjm.sw_hackathon.educationApi.openApi.EducationRow
 import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationCount
 import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationInfo
 import com.ssjm.sw_hackathon.goalApi.apiGetDailyTasks
+import com.ssjm.sw_hackathon.goalApi.apiGetProgressGoal
 import com.ssjm.sw_hackathon.goalApi.getDailyTasks.GetDailyTask
+import com.ssjm.sw_hackathon.goalApi.getProgressGoal.GetProgressGoalResult
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoAdapter
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoItem
 import com.ssjm.sw_hackathon.token.GloabalApplication
@@ -60,26 +63,23 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 목표, 이름 설정
-        var name: String = GloabalApplication.prefs.getString("name", "")
-        var goal: String = GloabalApplication.prefs.getString("goal", "")
-
-        binding.textName.text = name
-        binding.textName2.text = name
-        binding.textJob.text = goal
-
         initRecycler()
 
-        //addTodo(HomeTodoItem("note1", "노트에 필사하기", "66일째 실천중", mutableListOf("월", "수")))
-        //addTodo(HomeTodoItem("barista2", "실기 학원", "32일째 실천중", mutableListOf("화", "목")))
+        // 사용자 이름 조회
+        apiGetUserName(
+            setUserName = {
+                setUserName(it)
+            }
+        )
 
-        apiGetDailyTasks(
-            LocalDate.now(),
-            setDailyTask = {
+        // 목표 조회 -> 오늘의 할 일 조회
+        apiGetProgressGoal(
+            setGoalInfo = {
                 setDailyTasks(it)
             }
         )
 
+        // 북마크 교육 조회
         apiGetBookmark(
             getBookmark = {
                 getBookmark(it)
@@ -95,6 +95,25 @@ class HomeFragment : Fragment() {
         binding.textNoneBookmarkBtn.setOnClickListener(View.OnClickListener {
             view.findNavController().navigate(R.id.action_menu_home_to_education)
         })
+    }
+
+    // 이름 세팅
+    private fun setUserName(userName: String) {
+        binding.textName.text = userName
+        binding.textName2.text = userName
+    }
+
+    // 오늘의 할 일 세팅
+    private fun setDailyTasks(goalInfo: GetProgressGoalResult) {
+        binding.textJob.text = goalInfo.name
+
+        apiGetDailyTasks(
+            goalInfo.id,
+            LocalDate.now(),
+            setDailyTask = {
+                setDailyTasks(it)
+            }
+        )
     }
 
     // recyclerview 세팅

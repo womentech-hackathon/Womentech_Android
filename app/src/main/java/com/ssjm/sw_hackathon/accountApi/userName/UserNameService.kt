@@ -1,22 +1,17 @@
-package com.ssjm.sw_hackathon.goalApi.getDailyTasks
+package com.ssjm.sw_hackathon.accountApi.userName
 
 import com.ssjm.sw_hackathon.token.GloabalApplication
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Path
-import retrofit2.http.Query
-import java.time.LocalDate
 
 private var accessTokenValue: String = "Bearer " + GloabalApplication.prefs.getString("accessToken", "")
 private var refreshTokenValue: String = GloabalApplication.prefs.getString("refreshToken", "")
 
-interface GetDailyTasksService {
-    @GET("goals/{goal_id}/daily-tasks")
-    fun getDailyTasksGoal(
+interface UserNameService {
+    @GET("user/name")
+    fun getUserName(
         @Header("Authorization") authorization: String = accessTokenValue, // 로그인으로 발급받은 AccessToken: JWT {발급받은 토큰} 형태로 입력
         @Header("refresh-token") refreshToken: String = refreshTokenValue,  // 로그인으로 발급받은 RefreshToken
-        @Path("goal_id") goalId: Int,
-        @Query("date") date: LocalDate
-    ): Call<GetDailyTasksResponse>
+    ): Call<UserNameResponse>
 }

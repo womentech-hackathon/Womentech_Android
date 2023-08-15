@@ -23,6 +23,9 @@ data class GetDailyTask(
     @SerializedName("name")
     val name: String,
 
+    @SerializedName("startDate")
+    val startDate: String,
+
     @SerializedName("days")
     val days: MutableList<String>,
 

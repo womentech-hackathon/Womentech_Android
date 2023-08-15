@@ -53,7 +53,7 @@
     <string name="on_board_third_title">해당 직업을 갖기 위해\n하루하루 실천해야 할 것을\n적어주세요.</string>
     <string name="on_board_third_input_notice1">(을)를</string>
     <string name="on_board_third_input_notice2">매주</string>
-    <string name="on_board_third_input_notice3">요일마다 신청할 거예요.</string>
+    <string name="on_board_third_input_notice3">요일마다 실천할 거예요.</string>
     <string name="on_board_third_input_hint1">예시) 자격증 공부</string>
     <string name="on_board_third_input_hint2">요일 선택</string>
     <string name="on_board_third_select_done">선택 완료</string>
