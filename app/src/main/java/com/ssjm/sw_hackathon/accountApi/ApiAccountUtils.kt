@@ -13,6 +13,7 @@ import com.ssjm.sw_hackathon.accountApi.signUp.SignUpService
 import com.ssjm.sw_hackathon.accountApi.userName.UserNameResponse
 import com.ssjm.sw_hackathon.accountApi.userName.UserNameService
 import com.ssjm.sw_hackathon.apiClient.ApiClient
+import com.ssjm.sw_hackathon.token.GloabalApplication
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +21,14 @@ import retrofit2.Retrofit
 
 // api 통신을 위한 retrofit
 private val retrofit: Retrofit = ApiClient.getInstance()
+
+private var accessTokenValue: String? = null
+private var refreshTokenValue: String? = null
+
+fun setToken() {
+    accessTokenValue = "Bearer " + GloabalApplication.prefs.getString("accessToken", "")
+    refreshTokenValue = GloabalApplication.prefs.getString("refreshToken", "")
+}
 
 // 회원가입
 fun apiSignUp(
@@ -75,10 +84,11 @@ fun apiLogin(
 
 // 이름 조회
 fun apiGetUserName(
-    setUserName: (name: String) -> Unit
+    setUserName: (name: String?) -> Unit
 ) {
+    setToken()
     retrofit.create(UserNameService::class.java)
-        .getUserName()
+        .getUserName(accessTokenValue!!, refreshTokenValue!!)
         .enqueue(object : Callback<UserNameResponse> {
             override fun onResponse(call: Call<UserNameResponse>, response: Response<UserNameResponse>) {
                 Log.d(TAG, "사용자명 조회 결과 -------------------------------------------")
@@ -87,6 +97,10 @@ fun apiGetUserName(
                 if(response.body() != null) {
                     val userName = response.body()!!.data.name
                     setUserName(userName)
+                }
+
+                else {
+                    setUserName(null)
                 }
             }
 

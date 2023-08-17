@@ -1,5 +1,6 @@
 package com.ssjm.sw_hackathon.home
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +10,9 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ssjm.sw_hackathon.MainActivity
 import com.ssjm.sw_hackathon.R
+import com.ssjm.sw_hackathon.account.LoginActivity
 import com.ssjm.sw_hackathon.accountApi.apiGetUserName
 import com.ssjm.sw_hackathon.databinding.FragmentHomeBinding
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
@@ -26,6 +29,7 @@ import com.ssjm.sw_hackathon.goalApi.getDailyTasks.GetDailyTask
 import com.ssjm.sw_hackathon.goalApi.getProgressGoal.GetProgressGoalResult
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoAdapter
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoItem
+import com.ssjm.sw_hackathon.token.GloabalApplication
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -103,12 +107,21 @@ class HomeFragment : Fragment() {
     }
 
     // 이름 세팅
-    private fun setUserName(userName: String) {
+    private fun setUserName(userName: String?) {
+        // 사용자 이름이 null -> token 값이 올바르지 않음 -> 로그아웃됨
+        if(userName == null) {
+            GloabalApplication.prefs.setString("accessToken", "")
+            GloabalApplication.prefs.setString("refreshToken", "")
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
         binding.textName.text = userName
         binding.textName2.text = userName
     }
 
     // 오늘의 할 일 세팅
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setGoal(goalInfo: GetProgressGoalResult) {
         binding.textJob.text = goalInfo.name
 
@@ -150,12 +163,13 @@ class HomeFragment : Fragment() {
     }
 
     // 오늘의 할 일 받아와서 세팅
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setDailyTasks(tasks: MutableList<GetDailyTask>) {
         binding.textTodoCount.text = "(" + tasks.size.toString() + ")"
 
         for(i: Int in 0..(tasks.size - 1)) {
             val startDate = LocalDate.parse(tasks[i].startDate, DateTimeFormatter.ISO_DATE)
-            val doingDay = ChronoUnit.DAYS.between(today, startDate)
+            val doingDay = ChronoUnit.DAYS.between(startDate, today)
             addTodo(
                 HomeTodoItem(
                     coverImages[i],
