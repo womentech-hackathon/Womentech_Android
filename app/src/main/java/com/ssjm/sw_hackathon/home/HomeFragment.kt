@@ -1,5 +1,6 @@
 package com.ssjm.sw_hackathon.home
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +10,10 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ssjm.sw_hackathon.MainActivity
 import com.ssjm.sw_hackathon.R
+import com.ssjm.sw_hackathon.account.LoginActivity
+import com.ssjm.sw_hackathon.accountApi.apiGetUserName
 import com.ssjm.sw_hackathon.databinding.FragmentHomeBinding
 import com.ssjm.sw_hackathon.education.recycler.EducationAdapter
 import com.ssjm.sw_hackathon.education.recycler.EducationItem
@@ -20,11 +24,15 @@ import com.ssjm.sw_hackathon.educationApi.openApi.EducationRow
 import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationCount
 import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationInfo
 import com.ssjm.sw_hackathon.goalApi.apiGetDailyTasks
+import com.ssjm.sw_hackathon.goalApi.apiGetProgressGoal
 import com.ssjm.sw_hackathon.goalApi.getDailyTasks.GetDailyTask
+import com.ssjm.sw_hackathon.goalApi.getProgressGoal.GetProgressGoalResult
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoAdapter
 import com.ssjm.sw_hackathon.home.recycler.HomeTodoItem
 import com.ssjm.sw_hackathon.token.GloabalApplication
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 // 메인 탭
 class HomeFragment : Fragment() {
@@ -47,6 +55,8 @@ class HomeFragment : Fragment() {
 
     private var bookmarkList: MutableList<GetBookmarks>? = null
 
+    private lateinit var today: LocalDate
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,26 +70,25 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 목표, 이름 설정
-        var name: String = GloabalApplication.prefs.getString("name", "")
-        var goal: String = GloabalApplication.prefs.getString("goal", "")
-
-        binding.textName.text = name
-        binding.textName2.text = name
-        binding.textJob.text = goal
+        today = LocalDate.now()
 
         initRecycler()
 
-        //addTodo(HomeTodoItem("note1", "노트에 필사하기", "66일째 실천중", mutableListOf("월", "수")))
-        //addTodo(HomeTodoItem("barista2", "실기 학원", "32일째 실천중", mutableListOf("화", "목")))
-
-        apiGetDailyTasks(
-            LocalDate.now(),
-            setDailyTask = {
-                setDailyTasks(it)
+        // 사용자 이름 조회
+        apiGetUserName(
+            setUserName = {
+                setUserName(it)
             }
         )
 
+        // 목표 조회 -> 오늘의 할 일 조회
+        apiGetProgressGoal(
+            setGoalInfo = {
+                setGoal(it)
+            }
+        )
+
+        // 북마크 교육 조회
         apiGetBookmark(
             getBookmark = {
                 getBookmark(it)
@@ -95,6 +104,34 @@ class HomeFragment : Fragment() {
         binding.textNoneBookmarkBtn.setOnClickListener(View.OnClickListener {
             view.findNavController().navigate(R.id.action_menu_home_to_education)
         })
+    }
+
+    // 이름 세팅
+    private fun setUserName(userName: String?) {
+        // 사용자 이름이 null -> token 값이 올바르지 않음 -> 로그아웃됨
+        if(userName == null) {
+            GloabalApplication.prefs.setString("accessToken", "")
+            GloabalApplication.prefs.setString("refreshToken", "")
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
+        binding.textName.text = userName
+        binding.textName2.text = userName
+    }
+
+    // 오늘의 할 일 세팅
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setGoal(goalInfo: GetProgressGoalResult) {
+        binding.textJob.text = goalInfo.name
+
+        apiGetDailyTasks(
+            goalInfo.id,
+            today,
+            setDailyTask = {
+                setDailyTasks(it)
+            }
+        )
     }
 
     // recyclerview 세팅
@@ -126,15 +163,18 @@ class HomeFragment : Fragment() {
     }
 
     // 오늘의 할 일 받아와서 세팅
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setDailyTasks(tasks: MutableList<GetDailyTask>) {
         binding.textTodoCount.text = "(" + tasks.size.toString() + ")"
 
         for(i: Int in 0..(tasks.size - 1)) {
+            val startDate = LocalDate.parse(tasks[i].startDate, DateTimeFormatter.ISO_DATE)
+            val doingDay = ChronoUnit.DAYS.between(startDate, today)
             addTodo(
                 HomeTodoItem(
                     coverImages[i],
                     tasks[i].name,
-                    "1일째 실천중",
+                    doingDay.toString() + "일째 실천중",
                     tasks[i].days
                 )
             )

@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ssjm.sw_hackathon.R
 import com.ssjm.sw_hackathon.databinding.ItemTodoContentsBinding
 
-class TodoOfDayAdapter (private val context: Context,
-    private val onClickLatte: () -> Unit
+class TodoOfDayAdapter (private val context: Context
 ) : RecyclerView.Adapter<TodoOfDayAdapter.TodoOfDayViewHolder>() {
 
     var items = mutableListOf<TodoOfDayItem>()
@@ -41,7 +40,6 @@ class TodoOfDayAdapter (private val context: Context,
 
             if(item.checked) {
                 binding.imgTodoCompleteBtnRound.setImageResource(R.drawable.ic_check_round_selected)
-                onClickLatte()
             }
             else {
                 binding.imgTodoCompleteBtnRound.setImageResource(R.drawable.ic_check_round_unselected)

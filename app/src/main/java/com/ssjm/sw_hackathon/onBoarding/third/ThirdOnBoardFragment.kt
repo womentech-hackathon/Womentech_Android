@@ -245,8 +245,8 @@ class ThirdOnBoardFragment : Fragment() {
                         ),
                         name = goal!!
                     ),
-                    getGoalId = {
-                        saveGoalAndTask(it)
+                    doneOnBoarding = {
+                        doneOnBoarding()
                     }
                 )
             }
@@ -270,12 +270,7 @@ class ThirdOnBoardFragment : Fragment() {
         }
     }
 
-    private fun saveGoalAndTask(goalId: Int) {
-        Log.d("Test", "----------------------------------------------------------")
-
-        GloabalApplication.prefs.setString("goal", goal!!)
-        GloabalApplication.prefs.setInt("goalId", goalId)
-
+    private fun doneOnBoarding() {
         activity?.setFragment(EndOnBoardFragment())
     }
 

@@ -38,8 +38,8 @@ class EduBookmarkFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        page = 1
-        bookmarkList = null
+        //page = 1
+        //bookmarkList = null
     }
 
     override fun onCreateView(
