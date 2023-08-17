@@ -2,6 +2,7 @@ package com.ssjm.sw_hackathon.education.tab
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +24,7 @@ import com.ssjm.sw_hackathon.educationApi.openApi.apiGetEducationInfo
 class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
     // ViewBinding Setting
     private var _binding: FragmentEduAllBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     // 전체
     private var allEducationItems: MutableList<EducationItemInterface>? = null
@@ -47,9 +48,9 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        filter = "all"
-        orderType = "new"
-        page = 1
+        //filter = "all"
+        //orderType = "new"
+        //page = 1
     }
 
     override fun onCreateView(
@@ -58,13 +59,13 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
     ): View {
         _binding = FragmentEduAllBinding.inflate(layoutInflater)
 
-        return binding.root
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(_binding != null && binding != null) {
+        if(_binding != null) {
 
             filter = "all"
             orderType = "new"
@@ -81,22 +82,22 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
             )
 
             // 모두보기 필터 선택
-            binding.linearEduFilterAll.setOnClickListener(View.OnClickListener {
+            binding?.linearEduFilterAll?.setOnClickListener(View.OnClickListener {
                 filterAll()
             })
 
             // 접수중 필터 선택
-            binding.linearEduFilterIng.setOnClickListener(View.OnClickListener {
+            binding?.linearEduFilterIng?.setOnClickListener(View.OnClickListener {
                 filterIng()
             })
 
             // 마감 필터 선택
-            binding.linearEduFilterEnd.setOnClickListener(View.OnClickListener {
+            binding?.linearEduFilterEnd?.setOnClickListener(View.OnClickListener {
                 filterEnd()
             })
 
             // 정렬 버튼
-            binding.linearSortingBtn.setOnClickListener(View.OnClickListener {
+            binding?.linearSortingBtn?.setOnClickListener(View.OnClickListener {
                 val bundle = Bundle()
                 bundle.putString("orderType", orderType)
                 val bottomSheet =
@@ -106,13 +107,13 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
             })
 
             // recyclerview 스크롤 감지 => 무한 스크롤
-            binding.recyclerviewEduAll.addOnScrollListener(object :
+            binding?.recyclerviewEduAll?.addOnScrollListener(object :
                 RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
 
                     // 스크롤이 끝에 도달했는지 확인
-                    if (!binding.recyclerviewEduAll.canScrollVertically(1)) {
+                    if (!binding!!.recyclerviewEduAll.canScrollVertically(1)) {
                         // 모두 보기 filter 중이라면 모두보기 list의 데이터를 추가
                         if (filter == "all" && allEducationItems!!.size >= 10) {
                             educationAdapter.items.removeAt(10 * page)
@@ -156,9 +157,9 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         endEducationItems = mutableListOf<EducationItemInterface>()
 
         educationAdapter = EducationAdapter(requireContext())
-        binding.recyclerviewEduAll.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        binding.recyclerviewEduAll.adapter = educationAdapter
-        binding.recyclerviewEduAll.isNestedScrollingEnabled = false // 스크롤을 매끄럽게 해줌
+        binding?.recyclerviewEduAll?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding?.recyclerviewEduAll?.adapter = educationAdapter
+        binding?.recyclerviewEduAll?.isNestedScrollingEnabled = false // 스크롤을 매끄럽게 해줌
 
         // 최초: 전체 보여주기
         educationAdapter.items = allEducationItems!!
@@ -225,7 +226,7 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
     // 모두 보기 필터 선택
     fun filterAll() {
         page = 1
-        binding.recyclerviewEduAll.smoothScrollToPosition(0)
+        binding?.recyclerviewEduAll?.smoothScrollToPosition(0)
 
         filter = "all"
         if(allEducationItems!!.size >= 10 * page) {
@@ -239,22 +240,22 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         educationAdapter.notifyDataSetChanged()
 
         // 모두보기 선택
-        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_edu_filter_blue)
-        binding.textEduFilterAll.setTextColor(requireContext().getColor(R.color.white))
+        binding?.linearEduFilterAll?.setBackgroundResource(R.drawable.shape_edu_filter_blue)
+        binding?.textEduFilterAll?.setTextColor(requireContext().getColor(R.color.white))
 
         // 접수중 해제
-        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_edu_filter_gray)
-        binding.textEduFilterIng.setTextColor(requireContext().getColor(R.color.gray05))
+        binding?.linearEduFilterIng?.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding?.textEduFilterIng?.setTextColor(requireContext().getColor(R.color.gray05))
 
         // 마감 해제
-        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_edu_filter_gray)
-        binding.textEduFilterEnd.setTextColor(requireContext().getColor(R.color.gray05))
+        binding?.linearEduFilterEnd?.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding?.textEduFilterEnd?.setTextColor(requireContext().getColor(R.color.gray05))
     }
 
     // 접수중 필터 선택
     fun filterIng() {
         page = 1
-        binding.recyclerviewEduAll.smoothScrollToPosition(0)
+        binding?.recyclerviewEduAll?.smoothScrollToPosition(0)
 
         filter = "ing"
         if(ingEducationItems!!.size >= 10 * page) {
@@ -268,22 +269,22 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         educationAdapter.notifyDataSetChanged()
 
         // 모두보기 해제
-        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_edu_filter_gray)
-        binding.textEduFilterAll.setTextColor(requireContext().getColor(R.color.gray05))
+        binding?.linearEduFilterAll?.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding?.textEduFilterAll?.setTextColor(requireContext().getColor(R.color.gray05))
 
         // 접수중 선택
-        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_edu_filter_blue)
-        binding.textEduFilterIng.setTextColor(requireContext().getColor(R.color.white))
+        binding?.linearEduFilterIng?.setBackgroundResource(R.drawable.shape_edu_filter_blue)
+        binding?.textEduFilterIng?.setTextColor(requireContext().getColor(R.color.white))
 
         // 마감 해제
-        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_edu_filter_gray)
-        binding.textEduFilterEnd.setTextColor(requireContext().getColor(R.color.gray05))
+        binding?.linearEduFilterEnd?.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding?.textEduFilterEnd?.setTextColor(requireContext().getColor(R.color.gray05))
     }
 
     // 마감 필터 선택
     fun filterEnd() {
         page = 1
-        binding.recyclerviewEduAll.smoothScrollToPosition(0)
+        binding?.recyclerviewEduAll?.smoothScrollToPosition(0)
 
         filter = "end"
         if(endEducationItems!!.size >= 10 * page) {
@@ -297,20 +298,25 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         educationAdapter.notifyDataSetChanged()
 
         // 모두보기 해제
-        binding.linearEduFilterAll.setBackgroundResource(R.drawable.shape_edu_filter_gray)
-        binding.textEduFilterAll.setTextColor(requireContext().getColor(R.color.gray05))
+        binding?.linearEduFilterAll?.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding?.textEduFilterAll?.setTextColor(requireContext().getColor(R.color.gray05))
 
         // 접수중 해제
-        binding.linearEduFilterIng.setBackgroundResource(R.drawable.shape_edu_filter_gray)
-        binding.textEduFilterIng.setTextColor(requireContext().getColor(R.color.gray05))
+        binding?.linearEduFilterIng?.setBackgroundResource(R.drawable.shape_edu_filter_gray)
+        binding?.textEduFilterIng?.setTextColor(requireContext().getColor(R.color.gray05))
 
         // 마감 선택
-        binding.linearEduFilterEnd.setBackgroundResource(R.drawable.shape_edu_filter_blue)
-        binding.textEduFilterEnd.setTextColor(requireContext().getColor(R.color.white))
+        binding?.linearEduFilterEnd?.setBackgroundResource(R.drawable.shape_edu_filter_blue)
+        binding?.textEduFilterEnd?.setTextColor(requireContext().getColor(R.color.white))
     }
 
     // 최신순 정렬
     override fun orderNew() {
+        if(educationAdapter.items.size > 10) educationAdapter.items.removeAt(10 * page)
+        if(allEducationItems!!.size > 10) allEducationItems!!.removeAt(10 * page)
+        if(ingEducationItems!!.size > 10) ingEducationItems!!.removeAt(10 * page)
+        if(endEducationItems!!.size > 10) endEducationItems!!.removeAt(10 * page)
+
         orderType = "new"
         allEducationItems!!.sortByDescending { it.applicationStart }
         ingEducationItems!!.sortByDescending { it.applicationStart }
@@ -320,11 +326,16 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         else if(filter == "ing") filterIng()
         else if(filter == "end") filterEnd()
 
-        binding.textSortingBtn.text = "최신순"
+        binding?.textSortingBtn?.text = "최신순"
     }
 
     // 오래된순 정렬
     override fun orderOld() {
+        if(educationAdapter.items.size > 10) educationAdapter.items.removeAt(10 * page)
+        if(allEducationItems!!.size > 10) allEducationItems!!.removeAt(10 * page)
+        if(ingEducationItems!!.size > 10) ingEducationItems!!.removeAt(10 * page)
+        if(endEducationItems!!.size > 10) endEducationItems!!.removeAt(10 * page)
+
         orderType = "old"
         allEducationItems!!.sortBy { it.applicationStart }
         ingEducationItems!!.sortBy { it.applicationStart }
@@ -334,11 +345,16 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         else if(filter == "ing") filterIng()
         else if(filter == "end") filterEnd()
 
-        binding.textSortingBtn.text = "오래된순"
+        binding?.textSortingBtn?.text = "오래된순"
     }
 
     // 마감순 정렬
     override fun orderEnd() {
+        if(educationAdapter.items.size > 10) educationAdapter.items.removeAt(10 * page)
+        if(allEducationItems!!.size > 10) allEducationItems!!.removeAt(10 * page)
+        if(ingEducationItems!!.size > 10) ingEducationItems!!.removeAt(10 * page)
+        if(endEducationItems!!.size > 10) endEducationItems!!.removeAt(10 * page)
+
         orderType = "end"
         allEducationItems!!.sortByDescending { it.applicationEnd }
         ingEducationItems!!.sortByDescending { it.applicationEnd }
@@ -352,7 +368,7 @@ class EduAllFragment : Fragment(), EduOrderBottomFragment.EduOrderListener {
         else if(filter == "ing") filterIng()
         else if(filter == "end") filterEnd()
 
-        binding.textSortingBtn.text = "마감순"
+        binding?.textSortingBtn?.text = "마감순"
     }
 
     override fun onDestroy() {

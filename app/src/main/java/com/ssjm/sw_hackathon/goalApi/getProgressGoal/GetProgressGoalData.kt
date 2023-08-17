@@ -1,4 +1,4 @@
-package com.ssjm.sw_hackathon.onBoardingApi.getProgressGoal
+package com.ssjm.sw_hackathon.goalApi.getProgressGoal
 
 import com.google.gson.annotations.SerializedName
 

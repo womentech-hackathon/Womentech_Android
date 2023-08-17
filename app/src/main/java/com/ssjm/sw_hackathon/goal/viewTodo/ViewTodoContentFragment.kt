@@ -10,7 +10,6 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.ssjm.sw_hackathon.databinding.FragmentViewTodoContentBinding
 import com.ssjm.sw_hackathon.education.tab.EduViewPagerAdapter
-import com.ssjm.sw_hackathon.goal.checkAdd
 import com.ssjm.sw_hackathon.goal.tab.ViewTodoDoneFragment
 import com.ssjm.sw_hackathon.goal.tab.ViewTodoIngFragment
 
@@ -42,7 +41,6 @@ class ViewTodoContentFragment : Fragment() {
         // 이전으로
         binding.btnBack.setOnClickListener {
             view.findNavController().popBackStack()
-            checkAdd = true
         }
     }
 
