@@ -110,4 +110,17 @@
     <string name="order_title">정렬 설정</string>
     <string name="order_complete">적용</string>
     <string name="notice_bookmark">최근 찜한 순서대로 보여집니다.</string>
+
+    <!-- 마이페이지 -->
+    <string name="mypage_title1">님,</string>
+    <string name="mypage_title2">오늘 하루도 행복하세요!</string>
+    <string name="mypage_task_ing">실천 중</string>
+    <string name="mypage_task_done">실천 종료</string>
+    <string name="mypage_edu_bookmark">찜한 교육</string>
+    <string name="mypage_goal_done">목표 달성</string>
+    <string name="mypage_goal_reset">목표 재설정</string>
+    <string name="mypage_info_title">내 정보 수정</string>
+    <string name="mypage_change_name">이름 변경하기</string>
+    <string name="mypage_change_password">비밀번호 변경하기</string>
+    <string name="mypage_open_source">오픈소스 라이선스</string>
 </resources>
