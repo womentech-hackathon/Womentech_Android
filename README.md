@@ -53,8 +53,8 @@
 | :------------: | :------------: | :------------: | :------------: |
 | **Plan** | 김효진 |  |  |  
 | **Design** | 이연재 |  |  |
-| **iOS** | 임연주 | Flutter | [@yeondooo](https://github.com/yeondooo) |
 | **AOS** | 조정미 | Kotlin | [@jung0115](https://github.com/jung0115) |
+| **iOS** | 임연주 | Flutter | [@yeondooo](https://github.com/yeondooo) |
 | **Server** | 이소연 | SpringBoot | [@soyeonii](https://github.com/soyeonii) |
 
 ---
