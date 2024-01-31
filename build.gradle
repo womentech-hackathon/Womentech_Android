@@ -11,7 +11,7 @@ buildscript {
         // 4.3.15 버전에서는 default_web_client_id string 사용 불가
 //        classpath 'com.android.tools.build:gradle:7.4.0'
         classpath "com.android.tools.build:gradle:7.0.3"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20-Beta2'
 
     }
 }
