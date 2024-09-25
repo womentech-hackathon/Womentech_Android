@@ -6,6 +6,13 @@
 📆 2023.07.10.수 ~ 2023.08.09.수
 🏆 2023 서울 우먼테크 해커톤 우수상(3위)
 ```
+> [!note] 
+>
+> - `대회` [2023 서울 우먼테크 해커톤](http://www.sw-hackathon.com/)
+> - `주최•주관` 서울특별시, 서울시여성가족재단
+> - `OT 및 사전교육` 2023.07.10 ~ 2023.07.14
+> - `팀별활동 및 멘토링` 2023.07.15 ~ 2023.08.04
+> - `해커톤 본선` 2023.08.09
 
 <div align="center">
   <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fwomentech-hackathon%2FWomentech_AOS&count_bg=%238CA7FF&title_bg=%235C82FC&icon=micro-dot-blog.svg&icon_color=%23FFDC62&title=%EC%9D%B4%EB%A3%A8%EB%8B%A4+AOS&edge_flat=false"/></a>
