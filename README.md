@@ -4,7 +4,7 @@
 ```
 💡 중장년 재취업 목표 달성 도우미 앱
 📆 2023.07.10.수 ~ 2023.08.09.수
-🏆 2023 서울 우먼테크 해커톤 우수상(3위)
+🏆 2023 서울 우먼테크 해커톤 우수상(3위) / 서울시여성가족재단 대표이사상
 ```
 > [!note] 
 >
@@ -67,15 +67,8 @@
 ---
 
 ### 🛠️ Tech Stack
-**AOS**  
 <a href="https://developer.android.com" target="_blank" rel="noreferrer"> <img src="http://img.shields.io/badge/-Android_Studio-3DDC84?style=for-the-badge&logo=Android%20Studio&logoColor=white" alt="android" height="24"/> </a> <!-- 안드로이드 -->
 <a href="https://kotlinlang.org" target="_blank" rel="noreferrer"> <img src="http://img.shields.io/badge/-Kotlin-7f52ff?style=for-the-badge&logo=Kotlin&logoColor=white" alt="kotlin" height="24"/> </a> <!-- Kotlin -->  
-**Flutter**  
-<a href="https://flutter.dev" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="flutter" height="24"/> </a> <!-- Flutter -->
-<a href="https://dart.dev" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="dart" height="24"/> </a> <!-- Dart -->  
-**Server**  
-<a href="https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"> <img src="http://img.shields.io/badge/-springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" alt="springboot" height="24"/> </a> <!-- SpringBoot -->
-<a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white" alt="java" height="24"/> </a> <!-- Java -->  
 
 ---
 
